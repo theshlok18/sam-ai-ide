@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>S.A.M. Memory Core</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    .material-symbols-outlined { font-size: 20px; vertical-align: middle; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased min-h-screen flex justify-center">
+<div class="w-full max-w-md bg-[#090B10] min-h-screen flex flex-col relative pb-10 border-x border-[#232B3B]/40 shadow-2xl">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-[#11151D] border-b border-[#232B3B] px-4 py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button aria-label="Back" class="p-1 text-[#929BAD] hover:text-white" onclick="window.location.href='19_settings.html'">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-1">
+<span class="text-base font-semibold text-white">S.A.M. Memory Core</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+</div>
+<span class="text-[10px] font-mono text-[#929BAD]">ACTIVE SYNAPSE DB • 42 MEMORIES</span>
+</div>
+</div>
+<button class="p-1 text-[#5685FF]" onclick="alert('Adding custom memory vector...')"><span class="material-symbols-outlined">add_circle</span></button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-3 space-y-3">
+<!-- Search & Capacity -->
+<div class="bg-[#11151D] border border-[#232B3B] p-2.5 rounded space-y-1.5">
+<div class="flex justify-between text-xs">
+<span class="text-white">Vector DB Capacity: 14% used</span>
+<span class="text-[#42D6A4] font-mono text-[10px]">Encrypted</span>
+</div>
+<div class="w-full h-1.5 bg-[#171D28] rounded-full overflow-hidden flex">
+<div class="w-[14%] h-full bg-[#5685FF]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-[#929BAD] font-mono">
+<span>Local SQLite + AST Embeddings</span>
+<span>cosine_dist: 0.982</span>
+</div>
+</div>
+<!-- Memories List -->
+<section class="space-y-2.5">
+<article class="bg-[#171D28] border border-[#232B3B] rounded p-3 flex flex-col gap-1">
+<div class="flex justify-between text-xs">
+<span class="px-1.5 py-0.5 rounded bg-[#11151D] text-[#5685FF] font-mono text-[10px] border border-[#5685FF]/30">Coding Behavior</span>
+<span class="text-[#929BAD] text-[10px]">Saved 2d ago</span>
+</div>
+<p class="text-sm text-white font-medium">Prefers Kotlin with Jetpack Compose for Android UI.</p>
+<span class="text-[10px] text-[#929BAD] font-mono">Source: MainActivity.kt session (#MEM-0941)</span>
+</article>
+<article class="bg-[#171D28] border border-[#232B3B] rounded p-3 flex flex-col gap-1">
+<div class="flex justify-between text-xs">
+<span class="px-1.5 py-0.5 rounded bg-[#11151D] text-[#5685FF] font-mono text-[10px] border border-[#5685FF]/30">Coding Behavior</span>
+<span class="text-[#929BAD] text-[10px]">Saved 4d ago</span>
+</div>
+<p class="text-sm text-white font-medium">Always initialize Git repositories on new project creation.</p>
+<span class="text-[10px] text-[#929BAD] font-mono">Source: Project Wizard rule (#MEM-0899)</span>
+</article>
+<article class="bg-[#171D28] border border-[#232B3B] rounded p-3 flex flex-col gap-1">
+<div class="flex justify-between text-xs">
+<span class="px-1.5 py-0.5 rounded bg-[#11151D] text-[#42D6A4] font-mono text-[10px] border border-[#42D6A4]/30">Personal</span>
+<span class="text-[#929BAD] text-[10px]">Saved 1w ago</span>
+</div>
+<p class="text-sm text-white font-medium">Developer Name: Shlok Sathe.</p>
+<span class="text-[10px] text-[#929BAD] font-mono">Source: Voice Assistant onboarding (#MEM-0732)</span>
+</article>
+<article class="bg-[#171D28] border border-[#232B3B] rounded p-3 flex flex-col gap-1">
+<div class="flex justify-between text-xs">
+<span class="px-1.5 py-0.5 rounded bg-[#11151D] text-[#9B72FF] font-mono text-[10px] border border-[#9B72FF]/30">Behavior</span>
+<span class="text-[#929BAD] text-[10px]">Saved 2w ago</span>
+</div>
+<p class="text-sm text-white font-medium">Explain technical concepts directly without conversational fluff.</p>
+<span class="text-[10px] text-[#929BAD] font-mono">Source: Prompt directive (#MEM-0610)</span>
+</article>
+</section>
+<!-- Persona Tuning -->
+<section class="bg-[#11151D] border border-[#232B3B] rounded p-3 space-y-2">
+<h3 class="text-xs font-semibold text-white uppercase tracking-wider">Active AI Persona</h3>
+<div class="p-2.5 bg-[#171D28] border border-[#5685FF] rounded flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#5685FF]">smart_toy</span>
+<div><div class="text-xs font-bold text-white">Assistant</div><div class="text-[10px] text-[#929BAD]">Concise &amp; Fast Code Synthesis</div></div>
+</div>
+<span class="text-[9px] font-mono bg-[#11151D] text-[#5685FF] px-1.5 py-0.5 rounded">ACTIVE</span>
+</div>
+</section>
+</main>
+</div>
+</body></html>

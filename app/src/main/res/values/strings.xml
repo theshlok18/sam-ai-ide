@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">S.A.M.</string>
+    <string name="app_full_name">Smart Autonomous Machine</string>
+    <string name="developer_name">Shlok</string>
+    <string name="developer_role">BTech Student &amp; AI Systems Architect</string>
+</resources>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>S.A.M. // Autonomous Workspace v1</title>
+<!-- Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; vertical-align: middle; line-height: 1; }
+  .hairline-border { border: 1px solid #232B3B; }
+  .hairline-b { border-bottom: 1px solid #232B3B; }
+  .hairline-t { border-top: 1px solid #232B3B; }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .animate-spin-slow { animation: spin-slow 28s linear infinite; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#F4F6FC] antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<div class="w-full max-w-md bg-[#090B10] min-h-screen relative flex flex-col pb-24 shadow-2xl overflow-x-hidden border-x border-[#232B3B]/40">
+<!-- Android Status Bar -->
+<div class="w-full h-8 px-5 flex items-center justify-between text-[#929BAD] text-xs select-none z-50 pt-1">
+<span class="font-medium text-[#F4F6FC]">09:41</span>
+<div class="flex items-center space-x-2">
+<span class="text-[9px] font-semibold text-[#929BAD] px-1 py-0.5 rounded bg-[#11151D] border border-[#232B3B]">5G</span>
+<span class="material-symbols-outlined text-[15px] text-[#929BAD]">wifi</span>
+<div class="flex items-center space-x-1">
+<span class="text-[10px] text-[#929BAD]">98%</span>
+<span class="material-symbols-outlined text-[15px] text-[#929BAD]">battery_full</span>
+</div>
+</div>
+</div>
+<!-- Top App Bar -->
+<header class="bg-[#11151D] flex justify-between items-center w-full px-4 h-12 sticky top-0 z-40 hairline-b">
+<div class="flex items-center space-x-2">
+<div class="w-7 h-7 bg-[#11151D] border border-[#232B3B] rounded flex items-center justify-center text-[#5685FF]">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<div class="flex items-baseline space-x-1.5">
+<span class="font-semibold text-[#F4F6FC]">S.A.M.</span>
+<span class="text-[9px] px-1 text-[#929BAD] bg-[#171D28] border border-[#232B3B] rounded">v2.4-core</span>
+</div>
+</div>
+<div class="flex items-center space-x-2.5">
+<div class="flex items-center space-x-1.5 px-2 py-1 rounded bg-[#11151D] border border-[#232B3B]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4] animate-pulse"></span>
+<span class="text-[10px] text-[#42D6A4] font-medium">SYSTEM NORMAL</span>
+</div>
+<button aria-label="System Settings" class="w-8 h-8 rounded bg-[#11151D] border border-[#232B3B] flex items-center justify-center text-[#929BAD]" onclick="window.location.href='19_settings.html'">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-3 space-y-4">
+<!-- AI Core Status -->
+<section class="relative bg-[#11151D] border border-[#232B3B] rounded-lg p-4 overflow-hidden">
+<div class="flex items-center space-x-4 relative z-10">
+<div class="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border border-dashed border-[#5685FF]/40 animate-spin-slow"></div>
+<div class="relative z-10 w-8 h-8 rounded-full bg-gradient-to-tr from-[#5685FF] to-[#9B72FF] flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[18px] text-[#090B10]">smart_toy</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-[9px] px-1.5 py-0.5 rounded bg-[#171D28] border border-[#232B3B] text-[#5685FF] font-medium">IDLE READY</span>
+<h2 class="text-base font-semibold text-[#F4F6FC] mt-0.5">Ready to work</h2>
+<p class="text-xs text-[#929BAD]">Your AI workspace &amp; Android IDE</p>
+</div>
+</div>
+<div class="mt-3.5 pt-2.5 hairline-t flex items-center justify-between text-xs text-[#929BAD]">
+<div class="flex items-center space-x-1.5"><span class="material-symbols-outlined text-[13px] text-[#5685FF]">memory</span><span>Node: claude-3.5-sonnet</span></div>
+<div class="flex items-center space-x-1"><span class="w-1 h-1 rounded-full bg-[#42D6A4]"></span><span>18ms</span></div>
+</div>
+</section>
+<!-- Controls Matrix -->
+<section class="grid grid-cols-2 gap-2.5">
+<div class="bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF] rounded-lg p-3 cursor-pointer" onclick="window.location.href='06_ai_chat.html'">
+<span class="material-symbols-outlined text-[20px] text-[#5685FF]">chat</span>
+<h3 class="text-sm font-semibold text-[#F4F6FC] mt-2">AI Chat</h3>
+<p class="text-[11px] text-[#929BAD] mt-0.5">Pair programming</p>
+</div>
+<div class="bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF] rounded-lg p-3 cursor-pointer" onclick="window.location.href='04_ai_ide_workspace.html'">
+<span class="material-symbols-outlined text-[20px] text-[#5685FF]">terminal</span>
+<h3 class="text-sm font-semibold text-[#F4F6FC] mt-2">AI IDE</h3>
+<p class="text-[11px] text-[#929BAD] mt-0.5">Workspace &amp; syntax</p>
+</div>
+<div class="bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#9B72FF] rounded-lg p-3 cursor-pointer" onclick="window.location.href='09_agent_mode.html'">
+<span class="material-symbols-outlined text-[20px] text-[#9B72FF]">smart_toy</span>
+<h3 class="text-sm font-semibold text-[#F4F6FC] mt-2">Agent Mode</h3>
+<p class="text-[11px] text-[#929BAD] mt-0.5">Refactoring &amp; test</p>
+</div>
+<div class="bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#42D6A4] rounded-lg p-3 cursor-pointer" onclick="window.location.href='10_voice_assistant.html'">
+<span class="material-symbols-outlined text-[20px] text-[#42D6A4]">mic</span>
+<h3 class="text-sm font-semibold text-[#F4F6FC] mt-2">Voice Assistant</h3>
+<p class="text-[11px] text-[#929BAD] mt-0.5">Speech interface</p>
+</div>
+</section>
+<!-- Projects List -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-semibold text-[#F4F6FC]">Recent Projects</h3>
+<a class="text-xs text-[#5685FF]" href="14_projects.html">View All</a>
+</div>
+<div class="bg-[#171D28] border border-[#232B3B] rounded p-2.5 cursor-pointer" onclick="window.location.href='11_live_preview.html'">
+<div class="flex justify-between items-center">
+<span class="text-xs font-mono text-[#F4F6FC]">helios-core-engine</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-[#11151D] text-[#F4F6FC]">Rust</span>
+</div>
+</div>
+<div class="bg-[#171D28] border border-[#232B3B] rounded p-2.5 cursor-pointer" onclick="window.location.href='05_code_editor.html'">
+<div class="flex justify-between items-center">
+<span class="text-xs font-mono text-[#F4F6FC]">neural-canvas-android</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-[#11151D] text-[#9B72FF]">Kotlin</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav -->
+<nav class="bg-[#11151D] fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 hairline-t flex justify-around items-center h-14">
+<button class="flex flex-col items-center text-[#5685FF]" onclick="window.location.href='01_home_dashboard.html'"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="text-[10px]">Home</span></button>
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='14_projects.html'"><span class="material-symbols-outlined text-[20px]">folder_code</span><span class="text-[10px]">Projects</span></button>
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='06_ai_chat.html'"><span class="material-symbols-outlined text-[20px]">smart_toy</span><span class="text-[10px]">AI</span></button>
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='10_voice_assistant.html'"><span class="material-symbols-outlined text-[20px]">mic</span><span class="text-[10px]">Voice</span></button>
+</nav>
+</div>
+</body></html>

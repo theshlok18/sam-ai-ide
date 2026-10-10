@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>S.A.M. // Autonomous Workspace</title>
+<!-- Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#434654",
+            "on-surface-variant": "#c3c6d6",
+            "on-primary-container": "#002468",
+            "primary-fixed": "#dbe1ff",
+            "secondary-container": "#5625b6",
+            "on-secondary-fixed-variant": "#5321b4",
+            "tertiary-container": "#00a579",
+            "surface-container-highest": "#33353a",
+            "on-tertiary-fixed-variant": "#00513a",
+            "surface-container-low": "#1a1b21",
+            "on-primary-fixed-variant": "#003ea6",
+            "error-container": "#93000a",
+            "on-secondary": "#3b0091",
+            "primary-fixed-dim": "#b3c5ff",
+            "inverse-surface": "#e2e2e9",
+            "inverse-primary": "#1a55ce",
+            "on-secondary-fixed": "#23005c",
+            "tertiary": "#4cdeab",
+            "surface-bright": "#37393f",
+            "surface-dim": "#111318",
+            "secondary-fixed": "#e9ddff",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#4cdeab",
+            "outline": "#8d909f",
+            "on-secondary-container": "#c3abff",
+            "background": "#111318",
+            "inverse-on-surface": "#2e3036",
+            "secondary": "#d0bcff",
+            "surface-container-high": "#282a2f",
+            "on-tertiary-fixed": "#002115",
+            "surface-container-lowest": "#0c0e13",
+            "primary-container": "#5f8bff",
+            "surface-variant": "#33353a",
+            "on-tertiary": "#003827",
+            "on-surface": "#e2e2e9",
+            "on-primary-fixed": "#00174a",
+            "surface-container": "#1e1f25",
+            "on-error-container": "#ffdad6",
+            "surface": "#111318",
+            "tertiary-fixed": "#6dfbc6",
+            "surface-tint": "#b3c5ff",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#003122",
+            "primary": "#b3c5ff",
+            "on-background": "#e2e2e9",
+            "on-primary": "#002a76",
+            "secondary-fixed-dim": "#d0bcff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "code-block": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["JetBrains Mono"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "code-block": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "400" }],
+            "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-md": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.005em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Architectural Hairlines & Zero-glow Precision */
+    .hairline-border {
+      border: 1px solid #232B3B;
+    }
+    .hairline-b {
+      border-bottom: 1px solid #232B3B;
+    }
+    .hairline-t {
+      border-top: 1px solid #232B3B;
+    }
+    
+    /* Precision pulse animation */
+    @keyframes core-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+    .animate-core {
+      animation: core-pulse 4s ease-in-out infinite;
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 28s linear infinite;
+    }
+    @keyframes spin-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .animate-spin-reverse {
+      animation: spin-reverse 20s linear infinite;
+    }
+    /* Hide scrollbar for tab strips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#090B10] text-[#F4F6FC] antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Container (Simulated Android Chassis) -->
+<div class="w-full max-w-md bg-[#090B10] min-h-screen relative flex flex-col pb-24 shadow-2xl overflow-x-hidden border-x border-[#232B3B]/40">
+<!-- 1. ANDROID STATUS BAR -->
+<div class="w-full h-8 px-5 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm select-none z-50 pt-1">
+<span class="font-medium text-[#F4F6FC] tracking-tight">09:41</span>
+<div class="flex items-center space-x-2">
+<span class="text-[9px] font-semibold tracking-wider text-[#929BAD] px-1 py-0.5 rounded bg-[#11151D] border border-[#232B3B]">5G</span>
+<span class="material-symbols-outlined text-[15px] text-[#929BAD]">wifi</span>
+<div class="flex items-center space-x-1">
+<span class="text-[10px] text-[#929BAD] font-label-sm">98%</span>
+<span class="material-symbols-outlined text-[15px] text-[#929BAD]">battery_full</span>
+</div>
+</div>
+</div>
+<!-- 2. TOP APP BAR -->
+<header class="bg-surface-container-low dark:bg-surface-container-low flex justify-between items-center w-full px-space-md h-12 sticky top-0 z-40 hairline-b">
+<!-- Left: Brand mark & subversion badge -->
+<div class="flex items-center space-x-2">
+<div class="w-7 h-7 bg-[#11151D] border border-[#232B3B] rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<div class="flex items-baseline space-x-1.5">
+<span class="font-label-lg text-label-lg tracking-wider font-semibold text-on-surface dark:text-on-surface">S.A.M.</span>
+<span class="font-label-sm text-[9px] px-1 py-0.2 text-[#929BAD] bg-[#171D28] border border-[#232B3B] rounded tracking-wide">v2.4-core</span>
+</div>
+</div>
+<!-- Center/Right: Live System Indicator & Settings Action -->
+<div class="flex items-center space-x-2.5">
+<!-- System Health Pill -->
+<div class="flex items-center space-x-1.5 px-2 py-1 rounded bg-[#11151D] border border-[#232B3B] transition-colors duration-200" id="system-status-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4] animate-pulse" id="system-status-dot"></span>
+<span class="font-label-sm text-[10px] tracking-wider text-[#42D6A4] font-medium" id="system-status-text">SYSTEM NORMAL</span>
+</div>
+<!-- Trailing Settings Button -->
+<button aria-label="System Settings" class="w-8 h-8 rounded bg-[#11151D] border border-[#232B3B] flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface active:opacity-80 transition-all duration-150" onclick="window.location.href='19_settings.html'">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</header>
+<!-- INLINE NETWORK TOAST CONTAINER -->
+<div class="hidden px-space-md pt-2 transition-all duration-300" id="network-toast">
+<div class="w-full bg-[#171D28] border border-[#EF4444]/60 px-3 py-2 rounded flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px] text-[#EF4444]">wifi_off</span>
+<span class="font-label-md text-label-md text-[#F4F6FC]">Sync disconnected. Local cache active.</span>
+</div>
+<button class="font-label-sm text-label-sm px-2 py-0.5 bg-[#11151D] border border-[#232B3B] text-primary hover:border-primary active:scale-95 transition-all" onclick="resetState()">Retry</button>
+</div>
+</div>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 px-space-md py-3 space-y-4">
+<!-- 3. MAIN AI CORE STATUS AREA -->
+<section class="relative bg-[#11151D] border border-[#232B3B] rounded-xl p-4 overflow-hidden shadow-lg">
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#5685FF 1px, transparent 1px); background-size: 16px 16px;"></div>
+<div class="flex items-center space-x-4 relative z-10">
+<div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border border-dashed border-[#5685FF]/40 animate-spin-slow"></div>
+<div class="absolute inset-1 rounded-full border border-t-[#9B72FF] border-r-transparent border-b-[#5685FF]/60 border-l-transparent animate-spin-reverse"></div>
+<div class="absolute inset-2.5 rounded-full border border-[#232B3B] bg-[#090B10] flex items-center justify-center">
+<div class="w-5 h-5 rounded-full bg-gradient-to-tr from-[#5685FF] to-[#9B72FF] flex items-center justify-center shadow-md animate-core">
+<span class="material-symbols-outlined text-[13px] text-[#090B10]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-2">
+<span class="font-label-sm text-[10px] px-2 py-0.5 rounded bg-[#171D28] border border-[#232B3B] text-[#5685FF] font-medium tracking-wide">Ready to Work</span>
+<span class="text-[#929BAD] text-[11px] font-label-sm">v2.4 active</span>
+</div>
+<h2 class="font-headline-sm text-[17px] font-semibold text-[#F4F6FC] mt-1 tracking-tight truncate">Autonomous Agent Active</h2>
+<p class="font-body-sm text-[12px] text-[#929BAD] mt-0.5">Listening for workspace tasks &amp; code prompts</p>
+</div>
+</div>
+<div class="mt-3.5 pt-2.5 hairline-t flex items-center justify-between text-[#929BAD] font-label-sm text-[11px]">
+<div class="flex items-center space-x-1.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-[#5685FF]">memory</span>
+<span class="truncate">Node: claude-3.5-sonnet</span>
+</div>
+<div class="flex items-center space-x-1.5 flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+<span class="text-[#F4F6FC] font-medium">18ms</span>
+<span class="text-[#929BAD]">latency</span>
+</div>
+</div>
+</section>
+<!-- 4. PRIMARY ACTION GRID (High Density 2x2 Bento Matrix) -->
+<section class="space-y-2.5">
+<div class="flex items-center justify-between px-0.5">
+<span class="font-label-md text-[12px] text-[#929BAD] font-medium tracking-wide">Workspace Controls</span>
+<span class="font-label-sm text-[11px] text-[#929BAD] font-medium">4 modules</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- AI Chat -->
+<div class="group relative bg-[#171D28] hover:bg-[#1E2534] active:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF] rounded-xl p-3.5 transition-all duration-150 flex flex-col justify-between cursor-pointer min-h-[126px]" onclick="window.location.href='06_ai_chat.html'">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#11151D] border border-[#232B3B] group-hover:border-[#5685FF]/60 flex items-center justify-center text-[#5685FF] transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-[#929BAD] group-hover:text-[#5685FF] transition-colors">arrow_outward</span>
+</div>
+<div class="mt-3">
+<h3 class="font-headline-sm text-[14px] font-semibold text-[#F4F6FC] leading-snug">AI Chat</h3>
+<p class="font-body-sm text-[11px] text-[#929BAD] leading-tight mt-1">Pair programming &amp; architecture</p>
+</div>
+</div>
+<!-- AI IDE -->
+<div class="group relative bg-[#171D28] hover:bg-[#1E2534] active:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF] rounded-xl p-3.5 transition-all duration-150 flex flex-col justify-between cursor-pointer min-h-[126px]" onclick="window.location.href='04_ai_ide_workspace.html'">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#11151D] border border-[#232B3B] group-hover:border-[#5685FF]/60 flex items-center justify-center text-[#5685FF] transition-colors">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-[#929BAD] group-hover:text-[#5685FF] transition-colors">arrow_outward</span>
+</div>
+<div class="mt-3">
+<h3 class="font-headline-sm text-[14px] font-semibold text-[#F4F6FC] leading-snug">AI IDE</h3>
+<p class="font-body-sm text-[11px] text-[#929BAD] leading-tight mt-1">Syntax workspace &amp; file tree</p>
+</div>
+</div>
+<!-- Agent Mode -->
+<div class="group relative bg-[#171D28] hover:bg-[#1E2534] active:bg-[#1E2534] border border-[#232B3B] hover:border-[#9B72FF] rounded-xl p-3.5 transition-all duration-150 flex flex-col justify-between cursor-pointer min-h-[126px]" onclick="window.location.href='09_agent_mode.html'">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#11151D] border border-[#232B3B] group-hover:border-[#9B72FF]/60 flex items-center justify-center text-[#9B72FF] transition-colors">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-[#929BAD] group-hover:text-[#9B72FF] transition-colors">arrow_outward</span>
+</div>
+<div class="mt-3">
+<div class="flex items-center space-x-1.5">
+<h3 class="font-headline-sm text-[14px] font-semibold text-[#F4F6FC] leading-snug">Agent Mode</h3>
+<span class="w-1.5 h-1.5 rounded-full bg-[#9B72FF]"></span>
+</div>
+<p class="font-body-sm text-[11px] text-[#929BAD] leading-tight mt-1">Multi-file refactoring &amp; tests</p>
+</div>
+</div>
+<!-- Voice Assistant -->
+<div class="group relative bg-[#171D28] hover:bg-[#1E2534] active:bg-[#1E2534] border border-[#232B3B] hover:border-[#42D6A4] rounded-xl p-3.5 transition-all duration-150 flex flex-col justify-between cursor-pointer min-h-[126px]" onclick="window.location.href='10_voice_assistant.html'">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#11151D] border border-[#232B3B] group-hover:border-[#42D6A4]/60 flex items-center justify-center text-[#42D6A4] transition-colors">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-[#929BAD] group-hover:text-[#42D6A4] transition-colors">arrow_outward</span>
+</div>
+<div class="mt-3">
+<h3 class="font-headline-sm text-[14px] font-semibold text-[#F4F6FC] leading-snug">Voice Assistant</h3>
+<p class="font-body-sm text-[11px] text-[#929BAD] leading-tight mt-1">Natural speech commands</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. RECENT PROJECTS SECTION -->
+<section class="space-y-2.5 pt-1">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-baseline space-x-2">
+<h3 class="font-headline-sm text-[15px] font-semibold text-[#F4F6FC]">Recent Projects</h3>
+<span class="font-label-sm text-[11px] text-[#929BAD]">(14 active)</span>
+</div>
+<button class="font-label-sm text-[11px] text-[#5685FF] hover:underline flex items-center space-x-1 group" onclick="window.location.href='14_projects.html'">
+<span>View all</span>
+<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-2" id="projects-container">
+<div class="group bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF]/80 rounded-xl p-3 transition-colors cursor-pointer" onclick="window.location.href='11_live_preview.html'">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-[#5685FF] flex-shrink-0">folder_code</span>
+<span class="font-code-block text-[13px] text-[#F4F6FC] font-medium tracking-tight truncate">helios-core-engine</span>
+</div>
+<span class="font-label-sm text-[10px] px-2 py-0.5 rounded bg-[#11151D] border border-[#232B3B] text-[#F4F6FC] font-medium flex-shrink-0">Rust</span>
+</div>
+<div class="flex items-center justify-between mt-2.5 pt-2 hairline-t text-[#929BAD] font-label-sm text-[11px]">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[13px]">fork_right</span>
+<span>main</span>
+</div>
+<span>Updated 12m ago</span>
+</div>
+</div>
+<div class="group bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#9B72FF]/80 rounded-xl p-3 transition-colors cursor-pointer" onclick="window.location.href='05_code_editor.html'">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-[#9B72FF] flex-shrink-0">folder_code</span>
+<span class="font-code-block text-[13px] text-[#F4F6FC] font-medium tracking-tight truncate">neural-canvas-android</span>
+</div>
+<span class="font-label-sm text-[10px] px-2 py-0.5 rounded bg-[#11151D] border border-[#232B3B] text-[#9B72FF] font-medium flex-shrink-0">Kotlin</span>
+</div>
+<div class="flex items-center justify-between mt-2.5 pt-2 hairline-t text-[#929BAD] font-label-sm text-[11px]">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[13px]">fork_right</span>
+<span>dev-agent</span>
+</div>
+<span>Updated 2h ago</span>
+</div>
+</div>
+<div class="group bg-[#171D28] hover:bg-[#1E2534] border border-[#232B3B] hover:border-[#5685FF]/80 rounded-xl p-3 transition-colors cursor-pointer" onclick="window.location.href='15_new_project.html'">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-[#5685FF] flex-shrink-0">add_circle</span>
+<span class="font-code-block text-[13px] text-[#5685FF] font-medium tracking-tight truncate">+ Create New Project</span>
+</div>
+<span class="font-label-sm text-[10px] px-2 py-0.5 rounded bg-[#11151D] border border-[#232B3B] text-[#5685FF] font-medium flex-shrink-0">Wizard</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 7. DOCKED ANDROID BOTTOM NAVIGATION BAR -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 hairline-t flex flex-col justify-end">
+<div class="flex justify-around items-center px-space-sm h-14">
+<!-- Destination 1: Home (ACTIVE DESTINATION) -->
+<button aria-label="Home Workspace" class="flex flex-col items-center justify-center text-primary dark:text-primary font-medium active:scale-95 transition-transform duration-100 flex-1 py-1" onclick="window.location.href='01_home_dashboard.html'">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-sm text-[10px] tracking-tight mt-0.5">Home</span>
+</button>
+<!-- Destination 2: Projects -->
+<button aria-label="Projects" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary active:scale-95 transition-transform duration-100 flex-1 py-1" onclick="window.location.href='14_projects.html'">
+<span class="material-symbols-outlined text-[20px]">folder_code</span>
+<span class="font-label-sm text-[10px] tracking-tight mt-0.5">Projects</span>
+</button>
+<!-- Destination 3: AI -->
+<button aria-label="Autonomous AI" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary active:scale-95 transition-transform duration-100 flex-1 py-1" onclick="window.location.href='06_ai_chat.html'">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="font-label-sm text-[10px] tracking-tight mt-0.5">AI</span>
+</button>
+<!-- Destination 4: Voice -->
+<button aria-label="Voice Interface" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary active:scale-95 transition-transform duration-100 flex-1 py-1" onclick="window.location.href='10_voice_assistant.html'">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+<span class="font-label-sm text-[10px] tracking-tight mt-0.5">Voice</span>
+</button>
+</div>
+<div class="w-full h-3 pb-1 flex justify-center items-center pointer-events-none">
+<div class="w-28 h-1 bg-[#F4F6FC]/25 rounded-full"></div>
+</div>
+</nav>
+</div>
+</body></html>

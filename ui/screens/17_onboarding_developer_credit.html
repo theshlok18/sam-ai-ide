@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>S.A.M. // System Boot &amp; Developer Credit</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e2e2e9",
+            "outline-variant": "#434654",
+            "primary": "#5685FF",
+            "primary-container": "#5f8bff",
+            "tertiary": "#42D6A4",
+            "secondary": "#9B72FF",
+            "background": "#090B10"
+          },
+          fontFamily: {
+            "body": ["Inter"],
+            "mono": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-reverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.04); }
+    }
+    .animate-spin-slow { animation: spin-slow 22s linear infinite; }
+    .animate-spin-rev { animation: spin-reverse 16s linear infinite; }
+    .animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+    .grid-bg {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(67, 70, 84, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(67, 70, 84, 0.12) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased select-none min-h-screen flex justify-center items-center overflow-x-hidden p-0 m-0">
+<main class="relative w-full max-w-[420px] min-h-screen bg-[#090B10] flex flex-col justify-between overflow-hidden border-x border-[#1A1D26] shadow-2xl">
+  <div class="absolute inset-0 grid-bg pointer-events-none opacity-60"></div>
+  <div class="absolute top-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <!-- TOP SECTION -->
+  <header class="relative z-20 w-full pt-2 px-4">
+    <div class="flex justify-between items-center text-[#929BAD] text-[11px] font-mono px-1 pt-1 pb-2">
+      <span class="tracking-tight text-on-surface font-semibold">09:41</span>
+      <div class="flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[13px] leading-none text-[#929BAD]">signal_cellular_alt</span>
+        <span class="text-[9px] font-mono font-semibold tracking-wider text-primary">5G</span>
+        <span class="material-symbols-outlined text-[14px] leading-none text-[#929BAD]">battery_full</span>
+      </div>
+    </div>
+    <!-- Boot Status -->
+    <nav class="flex justify-between items-center mt-1 py-1">
+      <div class="flex items-center gap-1 px-2.5 py-1 rounded bg-[#11151D] border border-[#232B3B]">
+        <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-tertiary absolute"></span>
+        <span class="font-mono text-[10px] tracking-wider text-primary pl-1">SYSTEM BOOT // v2.4</span>
+      </div>
+      <a href="18_developer_profile.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#171D28] border border-[#5685FF]/60 shadow-[0_0_8px_rgba(86,133,255,0.35)] hover:border-primary transition-all">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_6px_#5685FF]"></span>
+        <span class="font-mono text-[10px] tracking-wider text-primary font-semibold uppercase">DEVELOPED BY SHLOK</span>
+      </a>
+      <a href="01_home_dashboard.html" class="font-mono text-xs text-[#929BAD] hover:text-on-surface transition-colors py-1 px-2 uppercase tracking-wider">
+        Skip
+      </a>
+    </nav>
+  </header>
+
+  <!-- CENTER SECTION -->
+  <div class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 pt-2 pb-4">
+    <!-- 3D Neural Core Orb Graphic -->
+    <div class="relative w-56 h-56 flex items-center justify-center my-2">
+      <div class="absolute inset-0 rounded-full border border-dashed border-[#5685FF]/20 animate-spin-slow"></div>
+      <div class="absolute inset-3 rounded-full border border-[#9B72FF]/30 animate-spin-rev flex items-start justify-center">
+        <div class="w-2 h-2 rounded-full bg-[#9B72FF] shadow-[0_0_8px_#9B72FF] -mt-1"></div>
+      </div>
+      <div class="absolute inset-8 rounded-full bg-gradient-to-tr from-[#5685FF]/30 to-[#9B72FF]/40 blur-lg animate-pulse-glow"></div>
+      <div class="absolute inset-10 rounded-full border border-primary/40 bg-[#11151D]/90 backdrop-blur-md flex flex-col items-center justify-center shadow-inner">
+        <div class="absolute inset-0 rounded-full border border-[#232B3B]"></div>
+        <div class="w-16 h-16 rounded-full bg-[#0c0e13] border border-primary flex items-center justify-center shadow-[0_0_24px_rgba(86,133,255,0.35)]">
+          <span class="material-symbols-outlined text-[30px] text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+        </div>
+        <span class="mt-2 text-[8px] font-mono uppercase tracking-widest text-[#929BAD]">NEURAL CORE</span>
+      </div>
+      <div class="absolute w-2 h-2 rounded-full bg-tertiary shadow-[0_0_6px_#42D6A4] bottom-5 right-6"></div>
+    </div>
+
+    <!-- Typography -->
+    <div class="flex flex-col items-center text-center mt-2 max-w-xs">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#11151D] border border-[#232B3B] mb-2.5">
+        <span class="w-1.5 h-1.5 bg-primary"></span>
+        <span class="font-mono text-[10px] tracking-widest text-primary uppercase">AUTONOMOUS ENGINE • BUILD #2025</span>
+      </div>
+      <h1 class="text-[32px] leading-tight font-bold text-[#F4F6FC] tracking-tight">
+        Meet S.A.M.
+      </h1>
+      <p class="mt-1.5 text-xs text-[#929BAD] leading-relaxed max-w-[280px]">
+        Your Smart Autonomous Machine. An end-to-end AI software engineer right in your pocket.
+      </p>
+    </div>
+
+    <!-- Features -->
+    <div class="w-full flex flex-col gap-2 mt-5">
+      <div class="flex items-center gap-3 p-2.5 rounded bg-[#171D28] border border-[#232B3B]">
+        <div class="w-9 h-9 rounded bg-[#11151D] border border-primary/30 flex items-center justify-center text-primary shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[19px]">code</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="text-sm font-semibold text-[#F4F6FC] truncate">Mobile AI IDE &amp; Code Editor</span>
+          <span class="font-mono text-[10px] text-[#929BAD] tracking-wide truncate">Full syntax engine &amp; Git terminal</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-2.5 rounded bg-[#171D28] border border-[#232B3B]">
+        <div class="w-9 h-9 rounded bg-[#11151D] border border-secondary/40 flex items-center justify-center text-secondary shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[19px]">smart_toy</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="text-sm font-semibold text-[#F4F6FC] truncate">Autonomous Agent Mode</span>
+          <span class="font-mono text-[10px] text-[#929BAD] tracking-wide truncate">Auto-scaffolding, testing &amp; execution</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-2.5 rounded bg-[#171D28] border border-[#232B3B]">
+        <div class="w-9 h-9 rounded bg-[#11151D] border border-tertiary/40 flex items-center justify-center text-tertiary shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[19px]">mic</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="text-sm font-semibold text-[#F4F6FC] truncate">JARVIS-style Voice Persona</span>
+          <span class="font-mono text-[10px] text-[#929BAD] tracking-wide truncate">Hands-free voice coding &amp; bilingual pipeline</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ACTION DECK -->
+  <footer class="relative z-20 w-full px-4 pt-2 pb-3 bg-gradient-to-t from-[#090B10] via-[#090B10] to-transparent">
+    <div class="flex items-center justify-center gap-1.5 mb-3.5">
+      <span class="w-7 h-1.5 rounded-full bg-[#5685FF] shadow-[0_0_8px_rgba(86,133,255,0.7)] transition-all"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#232B3B]"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#232B3B]"></span>
+    </div>
+    <a href="16_permission_setup.html" class="w-full h-12 bg-primary text-[#090B10] font-mono text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(86,133,255,0.35)] active:scale-[0.98] transition-transform duration-100">
+      <span class="tracking-wider">Initialize S.A.M.</span>
+      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </a>
+    <div class="flex items-center justify-center gap-1.5 mt-2.5 text-center text-[#929BAD]">
+      <span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">lock</span>
+      <p class="font-mono text-[10px] tracking-tight">
+        Encrypted on-device SQLite • Android Keystore verified
+      </p>
+    </div>
+    <div class="w-full flex justify-center pt-3 pb-1">
+      <div class="w-32 h-1 bg-[#33353A] rounded-full"></div>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

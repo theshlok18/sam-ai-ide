@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>S.A.M. AI &amp; Android IDE — Unified UI Hub</title>
+  <!-- Google Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef4ff',
+              100: '#d9e6ff',
+              400: '#759dff',
+              500: '#5685FF',
+              600: '#3362e6',
+              900: '#142a66'
+            },
+            accent: {
+              green: '#42D6A4',
+              purple: '#9B72FF',
+              cyan: '#38BDF8',
+              amber: '#F59E0B',
+              rose: '#F43F5E'
+            },
+            dark: {
+              bg: '#07090E',
+              card: '#0D111A',
+              cardHover: '#131926',
+              panel: '#101522',
+              border: '#1E2638',
+              borderLight: '#28344D'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #1E2638;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #28344D;
+    }
+    .device-shadow {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(86, 133, 255, 0.08);
+    }
+    .glow-blue {
+      box-shadow: 0 0 20px -3px rgba(86, 133, 255, 0.35);
+    }
+  </style>
+</head>
+<body class="bg-dark-bg text-[#E2E8F0] font-sans antialiased h-screen w-screen overflow-hidden flex flex-col select-none">
+
+  <!-- TOP MASTER APP BAR -->
+  <header class="h-14 bg-dark-panel border-b border-dark-border px-4 flex items-center justify-between shrink-0 z-30">
+    <div class="flex items-center gap-3">
+      <!-- Logo & System Badge -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-500 to-accent-purple flex items-center justify-center text-white shadow-md glow-blue">
+          <span class="material-symbols-outlined text-[18px]">terminal</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm tracking-tight text-white">S.A.M. AI &amp; Android IDE</span>
+            <span class="px-1.5 py-0.2 rounded bg-brand-500/15 border border-brand-500/30 text-brand-400 font-mono text-[10px] font-semibold">v2.4 CORE</span>
+          </div>
+          <p class="text-[11px] text-[#8D96A8] leading-none mt-0.5 font-mono">19 Unified Workspaces • Developer Preview</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Screen Telemetry & Viewport Switcher -->
+    <div class="flex items-center gap-3">
+      <!-- Viewport Device Switcher -->
+      <div class="hidden sm:flex items-center p-0.5 rounded-lg bg-dark-card border border-dark-border">
+        <button id="btn-vp-390" onclick="setViewport('390px')" class="px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-[#8D96A8] hover:text-white" title="Compact Mobile (390px)">
+          <span class="material-symbols-outlined text-[15px]">smartphone</span>
+          <span>390px</span>
+        </button>
+        <button id="btn-vp-440" onclick="setViewport('440px')" class="px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-brand-500 text-white shadow-sm" title="Android Chassis (440px)">
+          <span class="material-symbols-outlined text-[15px]">phone_android</span>
+          <span>440px</span>
+        </button>
+        <button id="btn-vp-768" onclick="setViewport('768px')" class="px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-[#8D96A8] hover:text-white" title="Tablet / Foldable (768px)">
+          <span class="material-symbols-outlined text-[15px]">tablet</span>
+          <span>768px</span>
+        </button>
+        <button id="btn-vp-full" onclick="setViewport('100%')" class="px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-[#8D96A8] hover:text-white" title="Desktop / Fullscreen">
+          <span class="material-symbols-outlined text-[15px]">fullscreen</span>
+          <span>Full</span>
+        </button>
+      </div>
+
+      <!-- Action Tools -->
+      <div class="flex items-center gap-1 border-l border-dark-border pl-3">
+        <button onclick="reloadPreview()" class="w-8 h-8 rounded-lg bg-dark-card hover:bg-dark-cardHover border border-dark-border flex items-center justify-center text-[#8D96A8] hover:text-white transition-all active:scale-95" title="Reload Frame">
+          <span class="material-symbols-outlined text-[17px]">refresh</span>
+        </button>
+        <button onclick="openCurrentInNewTab()" class="w-8 h-8 rounded-lg bg-dark-card hover:bg-dark-cardHover border border-dark-border flex items-center justify-center text-[#8D96A8] hover:text-white transition-all active:scale-95" title="Open in New Tab">
+          <span class="material-symbols-outlined text-[17px]">open_in_new</span>
+        </button>
+        <button onclick="toggleSidebar()" class="lg:hidden w-8 h-8 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-white" title="Toggle Navigation">
+          <span class="material-symbols-outlined text-[18px]">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE LAYOUT (SIDEBAR + PREVIEW CANVAS) -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- LEFT SIDEBAR: SCREEN NAVIGATION & SEARCH -->
+    <aside id="sidebar" class="w-80 bg-dark-panel border-r border-dark-border flex flex-col shrink-0 transition-all duration-300 z-20 absolute lg:relative inset-y-0 left-0">
+      <!-- Search & Filters -->
+      <div class="p-3 border-b border-dark-border space-y-2.5">
+        <!-- Search Input -->
+        <div class="relative flex items-center">
+          <span class="material-symbols-outlined absolute left-2.5 text-[16px] text-[#8D96A8]">search</span>
+          <input type="text" id="screenSearch" oninput="filterScreens()" placeholder="Search screens (e.g. chat, ide, voice)..." class="w-full h-8 pl-8 pr-3 bg-dark-card border border-dark-border rounded-lg text-xs font-mono text-white placeholder-[#5D6678] focus:border-brand-500 focus:ring-0 focus:outline-none transition-colors"/>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="flex items-center gap-1 overflow-x-auto custom-scroll pb-1">
+          <button onclick="setCategory('all')" id="cat-all" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-brand-500 text-white shrink-0">All (19)</button>
+          <button onclick="setCategory('core')" id="cat-core" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0">Core</button>
+          <button onclick="setCategory('ide')" id="cat-ide" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0">IDE</button>
+          <button onclick="setCategory('ai')" id="cat-ai" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0">AI</button>
+          <button onclick="setCategory('projects')" id="cat-projects" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0">Projects</button>
+          <button onclick="setCategory('system')" id="cat-system" class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0">System</button>
+        </div>
+      </div>
+
+      <!-- SCREEN LIST (SCROLLABLE) -->
+      <div class="flex-1 overflow-y-auto custom-scroll p-2 space-y-1" id="screenListContainer">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- DEVELOPER & CREDITS FOOTER -->
+      <div class="p-3 border-t border-dark-border bg-dark-card/60">
+        <a href="javascript:void(0)" onclick="selectScreen('screens/18_developer_profile.html')" class="flex items-center justify-between p-2 rounded-lg bg-dark-card border border-dark-border hover:border-brand-500 transition-all group">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-md bg-gradient-to-br from-brand-500 to-accent-purple flex items-center justify-center text-white text-xs font-mono font-bold shrink-0">
+              SS
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-white group-hover:text-brand-400 transition-colors truncate">Shlok Sathe</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>
+              </div>
+              <p class="text-[10px] font-mono text-[#8D96A8] truncate">shloksathe18@gmail.com</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-[16px] text-[#8D96A8] group-hover:text-white group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- RIGHT / MAIN: PREVIEW CANVAS -->
+    <main class="flex-1 bg-[#05070B] flex flex-col overflow-hidden relative">
+      <!-- CANVAS STATUS HEADER BAR -->
+      <div class="h-9 bg-dark-card/80 border-b border-dark-border px-4 flex items-center justify-between text-xs font-mono z-10 shrink-0">
+        <div class="flex items-center gap-2 text-[#8D96A8] truncate">
+          <span class="material-symbols-outlined text-[14px] text-accent-green">radio_button_checked</span>
+          <span id="canvasCurrentTitle" class="text-white font-medium truncate">01_home_dashboard.html</span>
+          <span class="text-[#434D61]">/</span>
+          <span id="canvasCurrentPath" class="text-brand-400 text-[11px] truncate">ui/screens/01_home_dashboard.html</span>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <span id="viewportLabel" class="text-[11px] text-[#8D96A8] bg-dark-panel px-2 py-0.5 rounded border border-dark-border">Viewport: 440px (Android)</span>
+          <div class="flex items-center gap-1">
+            <button onclick="prevScreen()" class="w-6 h-6 rounded bg-dark-panel hover:bg-dark-card border border-dark-border flex items-center justify-center text-[#8D96A8] hover:text-white" title="Previous screen (Arrow Up)">
+              <span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+            </button>
+            <button onclick="nextScreen()" class="w-6 h-6 rounded bg-dark-panel hover:bg-dark-card border border-dark-border flex items-center justify-center text-[#8D96A8] hover:text-white" title="Next screen (Arrow Down)">
+              <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE PREVIEW VIEWPORT AREA -->
+      <div class="flex-1 flex items-center justify-center p-2 sm:p-4 overflow-auto custom-scroll relative">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#5685FF 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <!-- Simulated Device Frame Container -->
+        <div id="deviceFrameWrapper" class="transition-all duration-300 flex flex-col items-center justify-center max-h-full" style="width: 440px; height: 100%;">
+          <div id="deviceBezel" class="w-full h-full bg-[#090B10] rounded-2xl border-2 border-dark-borderLight device-shadow flex flex-col overflow-hidden relative">
+            <!-- Simulated Native Hardware Top Notch/Camera Hole -->
+            <div id="notchContainer" class="w-full h-5 bg-[#090B10] flex items-center justify-center shrink-0 z-20">
+              <div class="w-20 h-3.5 bg-[#11151D] border border-dark-border rounded-full flex items-center justify-center gap-1.5 px-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1E2638]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#1E2638] border border-[#28344D]"></span>
+              </div>
+            </div>
+
+            <!-- Live IFrame Render -->
+            <iframe id="previewIframe" src="screens/01_home_dashboard.html" class="w-full flex-1 border-0 bg-[#090B10]" title="Screen Preview"></iframe>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JAVASCRIPT DATA & LOGIC -->
+  <script>
+    const screens = [
+      { id: '01', title: 'Home Dashboard (Autonomous Workspace)', file: 'screens/01_home_dashboard.html', cat: 'core', icon: 'dashboard', badge: 'v2.4' },
+      { id: '02', title: 'Home Dashboard (v1 Compact Layout)', file: 'screens/02_home_dashboard_v1.html', cat: 'core', icon: 'dashboard_customize', badge: 'v1' },
+      { id: '03', title: 'Home Dashboard (v2 Interactive Simulation)', file: 'screens/03_home_dashboard_v2.html', cat: 'core', icon: 'developer_board', badge: 'v2.4' },
+      { id: '04', title: 'AI IDE Workspace (File Tree & Syntax)', file: 'screens/04_ai_ide_workspace.html', cat: 'ide', icon: 'terminal', badge: 'Core' },
+      { id: '05', title: 'Code Editor (High-Mobility Rust/Kotlin)', file: 'screens/05_code_editor.html', cat: 'ide', icon: 'code', badge: 'IDE' },
+      { id: '06', title: 'AI Chat (Real-time Code Assistant)', file: 'screens/06_ai_chat.html', cat: 'ai', icon: 'chat', badge: 'Claude' },
+      { id: '07', title: 'AI Chat Dedicated (Multi-model Selector)', file: 'screens/07_ai_chat_dedicated.html', cat: 'ai', icon: 'forum', badge: 'Multi' },
+      { id: '08', title: 'AI Chat Refined (Context-aware Breadcrumb)', file: 'screens/08_ai_chat_refined.html', cat: 'ai', icon: 'chat_bubble', badge: 'Refined' },
+      { id: '09', title: 'Agent Mode (Multi-file Autonomous Execution)', file: 'screens/09_agent_mode.html', cat: 'ai', icon: 'smart_toy', badge: 'Auto' },
+      { id: '10', title: 'Voice Assistant (JARVIS Dual-lingual)', file: 'screens/10_voice_assistant.html', cat: 'ai', icon: 'mic', badge: 'Voice' },
+      { id: '11', title: 'Live Preview (Interactive Sandbox Web/App)', file: 'screens/11_live_preview.html', cat: 'ide', icon: 'preview', badge: 'Live' },
+      { id: '12', title: 'Memory Core (Vector Context & Rules)', file: 'screens/12_memory_core.html', cat: 'ai', icon: 'psychology', badge: 'Memory' },
+      { id: '13', title: 'AI Providers & Models (API Key Vault)', file: 'screens/13_ai_providers_models.html', cat: 'system', icon: 'hub', badge: 'Keys' },
+      { id: '14', title: 'Projects Manager (Active Repositories)', file: 'screens/14_projects.html', cat: 'projects', icon: 'folder_code', badge: '14 Repos' },
+      { id: '15', title: 'Create New Project (Scaffolding Wizard)', file: 'screens/15_new_project.html', cat: 'projects', icon: 'create_new_folder', badge: 'Wizard' },
+      { id: '16', title: 'Permission Setup (Android API 34 Manifest)', file: 'screens/16_permission_setup.html', cat: 'system', icon: 'security', badge: 'Security' },
+      { id: '17', title: 'Onboarding & Boot (Developer Credit)', file: 'screens/17_onboarding_developer_credit.html', cat: 'system', icon: 'rocket_launch', badge: 'Boot' },
+      { id: '18', title: 'Developer Profile (Shlok Sathe Creator)', file: 'screens/18_developer_profile.html', cat: 'system', icon: 'person', badge: 'Creator' },
+      { id: '19', title: 'Settings (Preferences & Preferences Core)', file: 'screens/19_settings.html', cat: 'system', icon: 'settings', badge: 'System' }
+    ];
+
+    let currentScreenIndex = 0;
+    let currentCategory = 'all';
+
+    function renderScreenList() {
+      const container = document.getElementById('screenListContainer');
+      const searchQuery = document.getElementById('screenSearch').value.toLowerCase();
+      container.innerHTML = '';
+
+      screens.forEach((screen, index) => {
+        const matchesCategory = currentCategory === 'all' || screen.cat === currentCategory;
+        const matchesSearch = screen.title.toLowerCase().includes(searchQuery) || screen.file.toLowerCase().includes(searchQuery);
+
+        if (matchesCategory && matchesSearch) {
+          const isActive = index === currentScreenIndex;
+          const card = document.createElement('div');
+          card.className = `p-2.5 rounded-lg border transition-all cursor-pointer flex items-center justify-between group ${
+            isActive
+              ? 'bg-brand-500/15 border-brand-500 text-white shadow-sm'
+              : 'bg-dark-card hover:bg-dark-cardHover border-dark-border text-[#C3C6D6]'
+          }`;
+          card.onclick = () => selectScreenByIndex(index);
+
+          card.innerHTML = `
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${
+                isActive ? 'bg-brand-500 text-white' : 'bg-dark-panel text-[#8D96A8] group-hover:text-brand-400 group-hover:bg-dark-card'
+              }">
+                <span class="material-symbols-outlined text-[16px]">${screen.icon}</span>
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[12.5px] font-medium leading-tight truncate ${isActive ? 'text-white font-semibold' : 'text-[#E2E8F0]'}">${screen.title}</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <span class="font-mono text-[10px] text-[#8D96A8] truncate">${screen.file.split('/')[1]}</span>
+                </div>
+              </div>
+            </div>
+            <span class="px-1.5 py-0.5 rounded font-mono text-[9px] shrink-0 ${
+              isActive ? 'bg-brand-500/30 text-brand-400 border border-brand-500/40' : 'bg-dark-panel text-[#8D96A8] border border-dark-border'
+            }">${screen.badge}</span>
+          `;
+          container.appendChild(card);
+        }
+      });
+    }
+
+    function selectScreenByIndex(index) {
+      currentScreenIndex = index;
+      const screen = screens[index];
+      const iframe = document.getElementById('previewIframe');
+      iframe.src = screen.file;
+      document.getElementById('canvasCurrentTitle').textContent = screen.title;
+      document.getElementById('canvasCurrentPath').textContent = `ui/${screen.file}`;
+      renderScreenList();
+    }
+
+    function selectScreen(filePath) {
+      const foundIdx = screens.findIndex(s => s.file === filePath);
+      if (foundIdx !== -1) {
+        selectScreenByIndex(foundIdx);
+      }
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      ['all', 'core', 'ide', 'ai', 'projects', 'system'].forEach(c => {
+        const btn = document.getElementById(`cat-${c}`);
+        if (btn) {
+          if (c === cat) {
+            btn.className = 'px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-brand-500 text-white shrink-0';
+          } else {
+            btn.className = 'px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-dark-card text-[#8D96A8] hover:text-white shrink-0';
+          }
+        }
+      });
+      renderScreenList();
+    }
+
+    function filterScreens() {
+      renderScreenList();
+    }
+
+    function setViewport(width) {
+      const wrapper = document.getElementById('deviceFrameWrapper');
+      const bezel = document.getElementById('deviceBezel');
+      const notch = document.getElementById('notchContainer');
+      const label = document.getElementById('viewportLabel');
+
+      wrapper.style.width = width;
+
+      ['390', '440', '768', 'full'].forEach(v => {
+        const btn = document.getElementById(`btn-vp-${v}`);
+        if (btn) {
+          btn.className = 'px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-[#8D96A8] hover:text-white';
+        }
+      });
+
+      if (width === '390px') {
+        document.getElementById('btn-vp-390').className = 'px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-brand-500 text-white shadow-sm';
+        bezel.className = 'w-full h-full bg-[#090B10] rounded-2xl border-2 border-dark-borderLight device-shadow flex flex-col overflow-hidden relative';
+        notch.classList.remove('hidden');
+        label.textContent = 'Viewport: 390px (Mobile Standard)';
+      } else if (width === '440px') {
+        document.getElementById('btn-vp-440').className = 'px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-brand-500 text-white shadow-sm';
+        bezel.className = 'w-full h-full bg-[#090B10] rounded-2xl border-2 border-dark-borderLight device-shadow flex flex-col overflow-hidden relative';
+        notch.classList.remove('hidden');
+        label.textContent = 'Viewport: 440px (Android Handheld)';
+      } else if (width === '768px') {
+        document.getElementById('btn-vp-768').className = 'px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-brand-500 text-white shadow-sm';
+        bezel.className = 'w-full h-full bg-[#090B10] rounded-xl border border-dark-borderLight device-shadow flex flex-col overflow-hidden relative';
+        notch.classList.add('hidden');
+        label.textContent = 'Viewport: 768px (Tablet / Foldable)';
+      } else {
+        document.getElementById('btn-vp-full').className = 'px-2.5 py-1 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-brand-500 text-white shadow-sm';
+        bezel.className = 'w-full h-full bg-[#090B10] rounded-none border-0 flex flex-col overflow-hidden relative';
+        notch.classList.add('hidden');
+        label.textContent = 'Viewport: 100% (Fullscreen)';
+      }
+    }
+
+    function reloadPreview() {
+      const iframe = document.getElementById('previewIframe');
+      iframe.src = iframe.src;
+    }
+
+    function openCurrentInNewTab() {
+      const screen = screens[currentScreenIndex];
+      window.open(screen.file, '_blank');
+    }
+
+    function prevScreen() {
+      if (currentScreenIndex > 0) {
+        selectScreenByIndex(currentScreenIndex - 1);
+      } else {
+        selectScreenByIndex(screens.length - 1);
+      }
+    }
+
+    function nextScreen() {
+      if (currentScreenIndex < screens.length - 1) {
+        selectScreenByIndex(currentScreenIndex + 1);
+      } else {
+        selectScreenByIndex(0);
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+    }
+
+    // Keyboard Hotkeys
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT') return;
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        prevScreen();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        nextScreen();
+      } else if (e.key === '1') {
+        setViewport('390px');
+      } else if (e.key === '2') {
+        setViewport('440px');
+      } else if (e.key === '3') {
+        setViewport('768px');
+      } else if (e.key === '4' || e.key.toLowerCase() === 'f') {
+        setViewport('100%');
+      }
+    });
+
+    // Initialize
+    renderScreenList();
+  </script>
+</body>
+</html>

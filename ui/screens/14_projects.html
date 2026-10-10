@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>S.A.M. - Projects</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter & JetBrains Mono Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  .material-symbols-outlined { font-size: 20px; vertical-align: middle; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased min-h-screen flex flex-col justify-between">
+<div class="relative w-full max-w-md mx-auto min-h-screen flex flex-col bg-[#090B10] pb-24 border-x border-[#232B3B]/40 shadow-2xl">
+<!-- Status Bar -->
+<div class="w-full flex justify-between items-center px-4 pt-1 h-7 text-[#929BAD] text-xs">
+<span class="font-medium text-white">09:41</span>
+<div class="flex items-center space-x-1.5"><span>5G</span><span class="material-symbols-outlined text-[13px]">wifi</span><span>98%</span></div>
+</div>
+<!-- Top App Bar -->
+<header class="bg-[#11151D] flex justify-between items-center w-full px-4 h-14 border-b border-[#232B3B] sticky top-0 z-40">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-[#171D28] border border-[#232B3B] flex items-center justify-center text-[#5685FF]">
+<span class="material-symbols-outlined">folder_code</span>
+</div>
+<div>
+<h1 class="text-sm font-semibold text-white">Projects Workspace</h1>
+<span class="text-[10px] text-[#42D6A4] font-mono">• 3 Active Repositories</span>
+</div>
+</div>
+<button class="p-2 text-[#5685FF]" onclick="window.location.href='15_new_project.html'"><span class="material-symbols-outlined text-[24px]">add_circle</span></button>
+</header>
+<!-- Projects List -->
+<main class="flex-1 px-4 py-3 space-y-3">
+<!-- Card 1 -->
+<article class="bg-[#171D28] p-3.5 rounded-xl border border-[#232B3B] hover:border-[#5685FF] transition-colors cursor-pointer" onclick="window.location.href='11_live_preview.html'">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h2 class="text-sm font-bold text-white">LoadMatrix_Mobile</h2>
+<p class="text-xs text-[#929BAD] mt-0.5">Android runtime debugger &amp; memory diagnostic suite.</p>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#11151D] text-[#42D6A4] border border-[#232B3B]">Kotlin</span>
+</div>
+<div class="flex justify-between pt-2 border-t border-[#232B3B] text-[11px] text-[#929BAD] font-mono">
+<span>git: main (c4a8f9d)</span>
+<span class="text-[#42D6A4]">Synced 2h ago</span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-[#171D28] p-3.5 rounded-xl border border-[#232B3B] hover:border-[#9B72FF] transition-colors cursor-pointer" onclick="window.location.href='04_ai_ide_workspace.html'">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h2 class="text-sm font-bold text-white">SiteBuddy_Backend</h2>
+<p class="text-xs text-[#929BAD] mt-0.5">Headless autonomous crawling service &amp; neural indexing.</p>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#11151D] text-[#9B72FF] border border-[#232B3B]">Python</span>
+</div>
+<div class="flex justify-between pt-2 border-t border-[#232B3B] text-[11px] text-[#929BAD] font-mono">
+<span>git: dev (7b910e2)</span>
+<span class="text-[#9B72FF]">1 uncommitted</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-[#171D28] p-3.5 rounded-xl border border-[#232B3B] hover:border-[#5685FF] transition-colors cursor-pointer" onclick="window.location.href='05_code_editor.html'">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h2 class="text-sm font-bold text-white">EscapeRoad_Web</h2>
+<p class="text-xs text-[#929BAD] mt-0.5">WebGL canvas telemetry viewer &amp; low-latency client.</p>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#11151D] text-[#5685FF] border border-[#232B3B]">HTML/JS</span>
+</div>
+<div class="flex justify-between pt-2 border-t border-[#232B3B] text-[11px] text-[#929BAD] font-mono">
+<span>git: main (e33fa12)</span>
+<span class="text-[#42D6A4]">Clean</span>
+</div>
+</article>
+</main>
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex justify-around items-center px-4 h-14 bg-[#11151D] border-t border-[#232B3B]">
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='01_home_dashboard.html'"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="text-[10px]">Home</span></button>
+<button class="flex flex-col items-center text-[#5685FF]" onclick="window.location.href='14_projects.html'"><span class="material-symbols-outlined text-[20px]">folder_code</span><span class="text-[10px]">Projects</span></button>
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='06_ai_chat.html'"><span class="material-symbols-outlined text-[20px]">smart_toy</span><span class="text-[10px]">AI</span></button>
+<button class="flex flex-col items-center text-[#929BAD]" onclick="window.location.href='10_voice_assistant.html'"><span class="material-symbols-outlined text-[20px]">mic</span><span class="text-[10px]">Voice</span></button>
+</nav>
+</div>
+</body></html>

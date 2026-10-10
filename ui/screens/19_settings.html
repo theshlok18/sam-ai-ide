@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>S.A.M. - Settings</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#4cdeab",
+            "outline-variant": "#434654",
+            "surface-container": "#1e1f25",
+            "primary-fixed": "#dbe1ff",
+            "tertiary-container": "#00a579",
+            "surface": "#111318",
+            "background": "#111318",
+            "surface-bright": "#37393f",
+            "surface-container-lowest": "#0c0e13",
+            "on-background": "#e2e2e9",
+            "on-surface": "#e2e2e9",
+            "surface-container-low": "#1a1b21",
+            "primary-container": "#5f8bff",
+            "surface-container-highest": "#33353a",
+            "surface-container-high": "#282a2f",
+            "secondary-container": "#5625b6",
+            "primary": "#b3c5ff",
+            "secondary": "#d0bcff",
+            "on-surface-variant": "#c3c6d6",
+            "error": "#ffb4ab",
+            "outline": "#8d909f"
+          },
+          fontFamily: {
+            "body": ["Inter"],
+            "mono": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-[#0c0e13] text-[#e2e2e9] antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col justify-between overflow-x-hidden pb-24">
+<!-- TOP APP BAR -->
+<header class="bg-[#1a1b21] text-primary border-b border-[#434654] flex justify-between items-center w-full px-4 h-12 fixed top-0 left-0 z-50">
+  <div class="flex items-center gap-2">
+    <a href="01_home_dashboard.html" aria-label="Navigate Back" class="w-8 h-8 flex items-center justify-center text-[#e2e2e9] hover:text-primary transition-opacity duration-150">
+      <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+    </a>
+    <h1 class="text-base font-semibold tracking-tight text-[#e2e2e9]">Settings</h1>
+  </div>
+  <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-[#434654] bg-[#282a2f]">
+      <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+      <span class="font-mono text-[10px] text-[#c3c6d6] font-medium">v2.4</span>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="w-full max-w-xl mx-auto pt-16 px-4 space-y-4 flex-1">
+  <!-- SECTION 1: AI & PERSONA -->
+  <section class="space-y-1.5">
+    <div class="flex items-center gap-1.5 px-1 py-1">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+      <h2 class="font-mono text-[11px] tracking-wider text-secondary uppercase font-semibold">AI &amp; PERSONA</h2>
+    </div>
+    <div class="bg-[#1a1b21] border border-[#434654] rounded-xl divide-y divide-[#434654] overflow-hidden">
+      <!-- AI Provider & Models -->
+      <a href="13_ai_providers_models.html" class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group block">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-primary group-hover:border-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">memory</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">AI Provider &amp; Models</div>
+            <div class="text-xs text-[#c3c6d6]">Default: Claude 3.5 Sonnet / V-Core 4</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-primary-container bg-[#282a2f] text-primary font-mono text-[10px]">
+            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Connected
+          </span>
+          <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+        </div>
+      </a>
+      <!-- Voice Persona -->
+      <a href="10_voice_assistant.html" class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group block">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-secondary group-hover:border-secondary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">mic</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">Voice Persona</div>
+            <div class="text-xs text-[#c3c6d6]">Available: Assistant, Senior Advisor</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="font-mono text-xs text-secondary font-medium">Senior Architect</span>
+          <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+        </div>
+      </a>
+      <!-- Memory Core -->
+      <a href="12_memory_core.html" class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group block">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-tertiary group-hover:border-tertiary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">psychology</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">S.A.M. Memory Core</div>
+            <div class="text-xs text-[#c3c6d6]">48 memories saved</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-[#282a2f] border border-[#434654] text-[#c3c6d6]">Encrypted</span>
+          <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 2: ANDROID AUTOMATION -->
+  <section class="space-y-1.5">
+    <div class="flex items-center gap-1.5 px-1 py-1">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+      <h2 class="font-mono text-[11px] tracking-wider text-primary font-semibold uppercase">ANDROID AUTOMATION</h2>
+    </div>
+    <div class="bg-[#1a1b21] border border-[#434654] rounded-xl divide-y divide-[#434654] overflow-hidden">
+      <!-- Accessibility Service -->
+      <div class="flex items-center justify-between p-3.5">
+        <div class="flex items-center gap-3 pr-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-primary flex-shrink-0">
+            <span class="material-symbols-outlined text-[20px]">touch_app</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">Accessibility Service</div>
+            <div class="text-xs text-[#c3c6d6]">Required for phone automation &amp; task execution</div>
+          </div>
+        </div>
+        <button aria-checked="true" class="w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 flex items-center justify-end flex-shrink-0 cursor-pointer focus:outline-none" role="switch" type="button">
+          <span class="w-5 h-5 bg-[#0c0e13] rounded-full"></span>
+        </button>
+      </div>
+      <!-- System Overlay -->
+      <div class="flex items-center justify-between p-3.5">
+        <div class="flex items-center gap-3 pr-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-primary flex-shrink-0">
+            <span class="material-symbols-outlined text-[20px]">picture_in_picture</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">System Overlay</div>
+            <div class="text-xs text-[#c3c6d6]">Allows S.A.M. to display overlays over other apps</div>
+          </div>
+        </div>
+        <button aria-checked="true" class="w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 flex items-center justify-end flex-shrink-0 cursor-pointer focus:outline-none" role="switch" type="button">
+          <span class="w-5 h-5 bg-[#0c0e13] rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PREFERENCES & DEVELOPER PROFILE -->
+  <section class="space-y-1.5">
+    <div class="flex items-center gap-1.5 px-1 py-1">
+      <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+      <h2 class="font-mono text-[11px] tracking-wider text-[#c3c6d6] font-semibold uppercase">PREFERENCES &amp; CREATOR</h2>
+    </div>
+    <div class="bg-[#1a1b21] border border-[#434654] rounded-xl divide-y divide-[#434654] overflow-hidden">
+      <!-- Developer Profile Link -->
+      <a href="18_developer_profile.html" class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group block">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-primary group-hover:border-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">person</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">Developer Profile &amp; Credits</div>
+            <div class="text-xs text-[#c3c6d6]">Shlok Sathe (shloksathe18@gmail.com)</div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+      </a>
+      <!-- Permissions Setup Link -->
+      <a href="16_permission_setup.html" class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group block">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-tertiary group-hover:border-tertiary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">verified_user</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">System Access &amp; Permissions</div>
+            <div class="text-xs text-[#c3c6d6]">Manage Android API 34 security tokens</div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+      </a>
+      <!-- Language -->
+      <div class="flex items-center justify-between p-3.5 hover:bg-[#1e1f25] transition-colors duration-150 cursor-pointer group">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654] flex items-center justify-center text-[#e2e2e9] group-hover:border-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">translate</span>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#e2e2e9]">Language</div>
+            <div class="text-xs text-[#c3c6d6]">Voice synthesis &amp; prompt parsing</div>
+          </div>
+        </div>
+        <span class="font-mono text-xs text-[#c3c6d6]">Marathi / English</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTICS & SYSTEM INFO -->
+  <section class="space-y-3 pt-2 pb-4">
+    <div class="w-full bg-[#1a1b21] border border-[#434654] rounded-lg p-2 flex items-center justify-center gap-2">
+      <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+      <span class="font-mono text-[11px] text-[#c3c6d6] tracking-tight text-center truncate">
+        Kernel: SAM-VCORE-4.9 • Android 14 (API 34) • Keystore Locked
+      </span>
+    </div>
+    <div class="text-center font-mono text-[10px] text-outline pt-1">
+      S.A.M. Autonomous Terminal • Built for High Mobility
+    </div>
+  </section>
+</main>
+
+<!-- BOTTOM NAVIGATION BAR -->
+<nav class="bg-[#1a1b21] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 h-16 border-t border-[#434654] shadow-lg backdrop-blur-md">
+  <a href="01_home_dashboard.html" class="flex flex-col items-center justify-center text-[#c3c6d6] hover:text-primary active:scale-95 transition-all">
+    <span class="material-symbols-outlined text-[22px]">terminal</span>
+    <span class="font-mono text-[10px] mt-0.5">Home</span>
+  </a>
+  <a href="14_projects.html" class="flex flex-col items-center justify-center text-[#c3c6d6] hover:text-primary active:scale-95 transition-all">
+    <span class="material-symbols-outlined text-[22px]">folder_code</span>
+    <span class="font-mono text-[10px] mt-0.5">Projects</span>
+  </a>
+  <a href="09_agent_mode.html" class="flex flex-col items-center justify-center text-[#c3c6d6] hover:text-primary active:scale-95 transition-all">
+    <span class="material-symbols-outlined text-[22px]">smart_toy</span>
+    <span class="font-mono text-[10px] mt-0.5">AI</span>
+  </a>
+  <a href="19_settings.html" class="flex flex-col items-center justify-center text-primary font-medium active:scale-95 transition-all">
+    <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+    <span class="font-mono text-[10px] mt-0.5">Settings</span>
+  </a>
+</nav>
+</body>
+</html>

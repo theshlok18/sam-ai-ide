@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>S.A.M. - Developer Profile</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#93000a",
+            "outline": "#8d909f",
+            "secondary": "#d0bcff",
+            "surface-container-lowest": "#0c0e13",
+            "outline-variant": "#434654",
+            "tertiary": "#4cdeab",
+            "surface-container-high": "#282a2f",
+            "surface-variant": "#33353a",
+            "background": "#090B10",
+            "primary-container": "#5f8bff",
+            "surface-container-low": "#1a1b21",
+            "surface": "#111318",
+            "secondary-container": "#5625b6",
+            "surface-container": "#1e1f25",
+            "primary": "#b3c5ff"
+          },
+          fontFamily: {
+            "body": ["Inter"],
+            "mono": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased min-h-screen flex flex-col font-body select-none">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 left-0 right-0 z-50 h-14 bg-[#1a1b21] border-b border-[#434654]/30 flex items-center justify-between px-4 backdrop-blur-md bg-opacity-95">
+  <div class="flex items-center gap-2">
+    <a href="01_home_dashboard.html" aria-label="Go back" class="w-9 h-9 rounded-lg flex items-center justify-center text-[#c3c6d6] hover:text-[#e2e2e9] hover:bg-[#282a2f] active:scale-95 transition-all">
+      <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-base font-semibold text-[#e2e2e9] tracking-tight leading-none">Developer Profile</h1>
+      <div class="flex items-center gap-1.5 mt-0.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+        <span class="font-mono text-[10px] text-[#c3c6d6]">DEV-ID: #SAM-0941</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-1">
+    <a href="19_settings.html" aria-label="System Settings" class="w-9 h-9 rounded-lg flex items-center justify-center text-[#c3c6d6] hover:text-primary hover:bg-[#282a2f] active:scale-95 transition-all">
+      <span class="material-symbols-outlined text-[20px]">settings</span>
+    </a>
+  </div>
+</header>
+
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 w-full max-w-md mx-auto pt-16 pb-24 px-4 space-y-4">
+  <!-- USER HEADER CARD -->
+  <section class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl p-4 relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary-container via-secondary to-tertiary"></div>
+    <div class="flex items-start gap-4">
+      <div class="relative shrink-0">
+        <div class="w-16 h-16 rounded-xl bg-[#282a2f] p-[1.5px] bg-gradient-to-br from-primary-container via-secondary-container to-[#33353a] flex items-center justify-center shadow-inner">
+          <div class="w-full h-full bg-[#11151D] rounded-[10px] flex items-center justify-center flex-col">
+            <span class="font-mono text-sm font-semibold text-primary tracking-wider">SS</span>
+            <span class="text-[9px] font-mono text-secondary -mt-1 tracking-widest opacity-80">ARCH</span>
+          </div>
+        </div>
+        <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#11151D] flex items-center justify-center">
+          <span class="w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-[#11151D]"></span>
+        </span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-1">
+          <h2 class="text-base font-semibold text-[#e2e2e9] truncate">Shlok Sathe</h2>
+          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-secondary-container/40 border border-secondary/20 text-secondary font-mono text-[10px] shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            v2.4 Active
+          </span>
+        </div>
+        <p class="text-xs text-[#c3c6d6] mt-0.5 truncate">
+          CSE Data Science Engineering
+        </p>
+        <div class="mt-2 flex items-center gap-1.5 flex-wrap">
+          <div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-[#11151D] border border-[#434654]/40 text-[#e2e2e9] text-[10px] font-mono">
+            <span class="material-symbols-outlined text-[14px] text-[#c3c6d6]">mail</span>
+            <span class="truncate max-w-[170px]">shloksathe18@gmail.com</span>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-[#1e1f25] text-outline font-mono text-[10px]">Lead Creator</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: LINKED ACCOUNTS & TOKENS -->
+  <section class="space-y-1.5">
+    <div class="flex items-center justify-between px-1">
+      <span class="font-mono text-[11px] text-[#c3c6d6] tracking-wider uppercase">Linked Accounts &amp; Keystores</span>
+      <span class="font-mono text-[10px] text-tertiary flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Synchronized
+      </span>
+    </div>
+    <div class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl divide-y divide-[#434654]/20 overflow-hidden">
+      <!-- Git Integration -->
+      <div class="p-3.5 flex items-center justify-between hover:bg-[#282a2f]/40 transition-colors">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654]/40 flex items-center justify-center text-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">fork_right</span>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm text-[#e2e2e9] flex items-center gap-1.5">
+              <span>Git Repository Host</span>
+              <span class="font-mono text-[10px] px-1.5 rounded bg-[#11151D] text-primary border border-primary/20">SSH</span>
+            </div>
+            <div class="font-mono text-[10px] text-[#c3c6d6] truncate mt-0.5">
+              Connected (<span class="text-primary font-medium">shloksathe18-dotcom</span>)
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+        </div>
+      </div>
+      <!-- Supabase -->
+      <div class="p-3.5 flex items-center justify-between hover:bg-[#282a2f]/40 transition-colors">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654]/40 flex items-center justify-center text-tertiary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">database</span>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm text-[#e2e2e9] flex items-center gap-1.5">
+              <span>Supabase Cloud Database</span>
+              <span class="font-mono text-[10px] px-1.5 rounded bg-tertiary/20 text-tertiary border border-tertiary/20">Live</span>
+            </div>
+            <div class="font-mono text-[10px] text-[#c3c6d6] truncate mt-0.5">
+              Connected (<span class="text-[#e2e2e9]">Supabase Auth • ap-south-1</span>)
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+        </div>
+      </div>
+      <!-- Model API Token Vault -->
+      <a href="13_ai_providers_models.html" class="p-3.5 flex items-center justify-between hover:bg-[#282a2f]/40 transition-colors block">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#282a2f] border border-[#434654]/40 flex items-center justify-center text-secondary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">key</span>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm text-[#e2e2e9] flex items-center gap-1.5">
+              <span>Model Hub API Token Vault</span>
+            </div>
+            <div class="font-mono text-[10px] text-outline truncate mt-0.5 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[13px] text-outline">lock</span>
+              <span>Keystore Secured • AES-256 (GCM)</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+          <span class="material-symbols-outlined text-[18px] text-outline">chevron_right</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DEV STATS & TELEMETRY -->
+  <section class="space-y-1.5">
+    <div class="flex items-center justify-between px-1">
+      <span class="font-mono text-[11px] text-[#c3c6d6] tracking-wider uppercase">S.A.M. Dev Stats &amp; Telemetry</span>
+      <span class="font-mono text-[10px] text-outline">Cluster #04-AZ</span>
+    </div>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl p-3 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-outline">
+          <span class="material-symbols-outlined text-[20px] text-primary">folder_code</span>
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-primary-container/20 text-primary">2 Active</span>
+        </div>
+        <div class="mt-3">
+          <div class="font-mono text-[10px] text-[#c3c6d6]">Projects Hosted</div>
+          <div class="font-mono text-xs text-[#e2e2e9] mt-1 truncate">SiteBuddy, LoadMatrix</div>
+        </div>
+      </div>
+      <div class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl p-3 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-outline">
+          <span class="material-symbols-outlined text-[20px] text-secondary">smart_toy</span>
+          <span class="font-mono text-[10px] text-outline">v2.4 Agent</span>
+        </div>
+        <div class="mt-3">
+          <div class="font-mono text-[10px] text-[#c3c6d6]">Agent Lines Written</div>
+          <div class="text-sm font-semibold text-primary-container mt-0.5">1,842 <span class="text-[10px] text-outline font-normal">lines</span></div>
+        </div>
+      </div>
+      <div class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl p-3 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-outline">
+          <span class="material-symbols-outlined text-[20px] text-tertiary">bolt</span>
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-tertiary/20 text-tertiary">Optimal</span>
+        </div>
+        <div class="mt-3">
+          <div class="font-mono text-[10px] text-[#c3c6d6]">Task Automations</div>
+          <div class="text-sm font-semibold text-tertiary mt-0.5">24 <span class="text-[10px] text-outline font-normal">Actions</span></div>
+        </div>
+      </div>
+      <div class="bg-[#1a1b21] border border-[#434654]/40 rounded-xl p-3 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-outline">
+          <span class="material-symbols-outlined text-[20px] text-tertiary">check_circle</span>
+          <span class="font-mono text-[10px] text-outline">Compiled</span>
+        </div>
+        <div class="mt-3">
+          <div class="font-mono text-[10px] text-[#c3c6d6]">AST Precision Rate</div>
+          <div class="text-sm font-semibold text-[#e2e2e9] mt-0.5">99.98%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER TELEMETRY MARK -->
+  <div class="text-center py-2">
+    <p class="font-mono text-[10px] text-outline/80">S.A.M. MOBILE ENGINE • KERNEL BUILD #2025.10.8</p>
+    <p class="font-mono text-[10px] text-outline/50 mt-0.5">ALL SECURE REPOSITORIES VERIFIED ON-DEVICE</p>
+  </div>
+</main>
+
+<!-- BOTTOM NAVIGATION BAR -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#1a1b21] border-t border-[#434654]/30 px-2 h-16 flex justify-around items-center backdrop-blur-lg bg-opacity-95">
+  <a href="01_home_dashboard.html" class="flex flex-col items-center justify-center w-16 py-1 text-[#c3c6d6] hover:text-primary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[22px]">terminal</span>
+    <span class="font-mono text-[10px] mt-0.5">Home</span>
+  </a>
+  <a href="14_projects.html" class="flex flex-col items-center justify-center w-16 py-1 text-[#c3c6d6] hover:text-primary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[22px]">folder_code</span>
+    <span class="font-mono text-[10px] mt-0.5">Projects</span>
+  </a>
+  <a href="09_agent_mode.html" class="flex flex-col items-center justify-center w-16 py-1 text-[#c3c6d6] hover:text-primary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[22px]">smart_toy</span>
+    <span class="font-mono text-[10px] mt-0.5">AI</span>
+  </a>
+  <a href="19_settings.html" class="flex flex-col items-center justify-center w-16 py-1 text-primary active:scale-95 transition-transform relative">
+    <span class="material-symbols-outlined text-[22px] fill-1">settings</span>
+    <span class="font-mono text-[10px] font-medium mt-0.5 text-primary">Settings</span>
+    <span class="absolute -bottom-1 w-6 h-0.5 bg-primary-container rounded-full"></span>
+  </a>
+</nav>
+</body>
+</html>

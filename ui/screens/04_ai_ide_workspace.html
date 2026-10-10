@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>S.A.M. - Mobile AI IDE Workspace</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#00174a",
+            "primary-container": "#5f8bff",
+            "inverse-on-surface": "#2e3036",
+            "on-primary": "#002a76",
+            "on-secondary-fixed-variant": "#5321b4",
+            "on-tertiary": "#003827",
+            "surface-bright": "#37393f",
+            "surface-container": "#1e1f25",
+            "secondary-fixed-dim": "#d0bcff",
+            "tertiary-container": "#00a579",
+            "outline-variant": "#434654",
+            "surface-container-high": "#282a2f",
+            "on-tertiary-fixed": "#002115",
+            "background": "#111318",
+            "surface-container-lowest": "#0c0e13",
+            "on-error": "#690005",
+            "on-primary-container": "#002468",
+            "on-primary-fixed-variant": "#003ea6",
+            "secondary-fixed": "#e9ddff",
+            "tertiary-fixed-dim": "#4cdeab",
+            "surface-dim": "#111318",
+            "primary-fixed": "#dbe1ff",
+            "error": "#ffb4ab",
+            "secondary": "#d0bcff",
+            "on-secondary-container": "#c3abff",
+            "inverse-primary": "#1a55ce",
+            "surface": "#111318",
+            "surface-variant": "#33353a",
+            "outline": "#8d909f",
+            "on-error-container": "#ffdad6",
+            "surface-tint": "#b3c5ff",
+            "on-surface-variant": "#c3c6d6",
+            "secondary-container": "#5625b6",
+            "inverse-surface": "#e2e2e9",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#23005c",
+            "surface-container-low": "#1a1b21",
+            "primary-fixed-dim": "#b3c5ff",
+            "on-secondary": "#3b0091",
+            "primary": "#b3c5ff",
+            "tertiary": "#4cdeab",
+            "on-surface": "#e2e2e9",
+            "on-tertiary-fixed-variant": "#00513a",
+            "on-background": "#e2e2e9",
+            "on-tertiary-container": "#003122",
+            "surface-container-highest": "#33353a",
+            "tertiary-fixed": "#6dfbc6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "0.75rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["JetBrains Mono"],
+            "code-block": ["JetBrains Mono"],
+            "body-lg": ["Inter"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-sm": ["Inter"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #434654;
+      border-radius: 2px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#090B10] text-[#F4F6FC] font-body-sm text-body-sm select-none antialiased min-h-screen flex flex-col justify-between overflow-x-hidden">
+<!-- ==================== 1. ANDROID STATUS BAR ==================== -->
+<div class="w-full bg-[#090B10] pt-2 px-4 pb-1.5 flex items-center justify-between text-[#F4F6FC] z-50 border-b border-[#1E2638]">
+<div class="flex items-center gap-1 font-label-md text-label-md tracking-tight font-semibold">
+<span>09:41</span>
+</div>
+<div class="h-4 w-20 rounded-full bg-[#11151D] border border-[#1E2638] flex items-center justify-center opacity-40">
+<div class="w-1.5 h-1.5 rounded-full bg-[#1E2638]"></div>
+</div>
+<div class="flex items-center gap-2 text-[#929BAD] text-[12px]">
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-[#F4F6FC]">5G</span>
+<span class="material-symbols-outlined text-[15px] text-[#F4F6FC]" data-icon="wifi">wifi</span>
+<div class="flex items-center gap-0.5">
+<span class="font-label-sm text-label-sm text-[#F4F6FC]">98%</span>
+<span class="material-symbols-outlined text-[16px] text-[#42D6A4]" data-icon="battery_charging_full" data-weight="fill" style="font-variation-settings: 'FILL' 1;">battery_charging_full</span>
+</div>
+</div>
+</div>
+<!-- ==================== 2. COMPACT TOP APP BAR ==================== -->
+<header class="w-full bg-[#11151D] border-b border-[#1E2638] px-3 py-2 flex items-center justify-between z-40">
+<div class="flex items-center gap-2">
+<button aria-label="Back to Workspace" class="w-8 h-8 rounded-lg bg-[#171D28] border border-[#1E2638] flex items-center justify-center text-[#929BAD] hover:text-[#F4F6FC] active:scale-95 transition-transform" onclick="window.location.href='01_home_dashboard.html'">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-semibold text-[#F4F6FC] tracking-tight">my-project</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" title="Unsaved changes"></span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<div class="flex items-center gap-0.5 font-label-sm text-label-sm text-[#929BAD]">
+<span class="material-symbols-outlined text-[11px] text-[#9B72FF]" data-icon="fork_right">fork_right</span>
+<span>main</span>
+</div>
+<span class="text-[#434654]">•</span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-[#42D6A4]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+<span>Synced</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="h-7 px-2.5 rounded bg-[#5685FF] hover:bg-opacity-90 active:scale-95 text-[#090B10] font-label-md text-label-md font-semibold flex items-center gap-1 transition-all" id="quick-run-btn">
+<span class="material-symbols-outlined text-[15px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>RUN</span>
+</button>
+<button aria-label="Save File" class="w-7 h-7 rounded bg-[#171D28] border border-[#1E2638] text-[#929BAD] hover:text-[#F4F6FC] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]" data-icon="save">save</span>
+</button>
+<button aria-label="Options" class="w-7 h-7 rounded bg-[#171D28] border border-[#1E2638] text-[#929BAD] hover:text-[#F4F6FC] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- ==================== 3. MOBILE MODE SWITCHER ==================== -->
+<nav class="w-full bg-[#11151D] border-b border-[#1E2638] px-2 flex items-center justify-between text-center overflow-x-auto custom-scrollbar">
+<button class="nav-tab flex-1 min-w-[70px] py-2 border-b-2 border-transparent text-[#929BAD] hover:text-[#F4F6FC] flex flex-col items-center justify-center gap-0.5 transition-colors" id="tab-nav-explorer" onclick="toggleExplorerModal()">
+<span class="material-symbols-outlined text-[16px]" data-icon="folder_code">folder_code</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</button>
+<button class="nav-tab flex-1 min-w-[70px] py-2 border-b-2 border-[#5685FF] text-[#5685FF] font-semibold flex flex-col items-center justify-center gap-0.5 transition-colors" id="tab-nav-editor">
+<span class="material-symbols-outlined text-[16px]" data-icon="code">code</span>
+<span class="font-label-sm text-label-sm">Editor</span>
+</button>
+<button class="nav-tab flex-1 min-w-[70px] py-2 border-b-2 border-transparent text-[#9B72FF] hover:text-[#F4F6FC] flex flex-col items-center justify-center gap-0.5 transition-colors" id="tab-nav-ai" onclick="window.location.href='06_ai_chat.html'">
+<div class="relative">
+<span class="material-symbols-outlined text-[16px]" data-icon="smart_toy">smart_toy</span>
+<span class="absolute -top-0.5 -right-1 w-1.5 h-1.5 rounded-full bg-[#9B72FF] animate-pulse"></span>
+</div>
+<span class="font-label-sm text-label-sm">AI Assist</span>
+</button>
+<button class="nav-tab flex-1 min-w-[70px] py-2 border-b-2 border-transparent text-[#929BAD] hover:text-[#F4F6FC] flex flex-col items-center justify-center gap-0.5 transition-colors" id="tab-nav-terminal" onclick="toggleTerminalPanel()">
+<span class="material-symbols-outlined text-[16px]" data-icon="terminal">terminal</span>
+<span class="font-label-sm text-label-sm">Terminal</span>
+</button>
+<button class="nav-tab flex-1 min-w-[70px] py-2 border-b-2 border-transparent text-[#929BAD] hover:text-[#F4F6FC] flex flex-col items-center justify-center gap-0.5 transition-colors" id="tab-nav-git" onclick="window.location.href='14_projects.html'">
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="fork_right">fork_right</span>
+<span class="font-label-sm text-[9px] px-1 py-0.2 bg-[#171D28] text-[#42D6A4] border border-[#1E2638] rounded">+2</span>
+</div>
+<span class="font-label-sm text-label-sm">Git</span>
+</button>
+</nav>
+<!-- ==================== 4. COLLAPSIBLE EXPLORER ==================== -->
+<div class="w-full bg-[#11151D] border-b border-[#1E2638] flex flex-col">
+<div class="flex items-center overflow-x-auto custom-scrollbar px-1 pt-1 gap-1">
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0D1117] border-t-2 border-t-[#5685FF] border-x border-[#1E2638] rounded-t text-[#F4F6FC] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[13px] text-[#5685FF]" data-icon="description">description</span>
+<span class="font-medium">src/app.py</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" title="Modified"></span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#171D28] border-x border-t border-[#1E2638] rounded-t text-[#929BAD] font-label-md text-label-md hover:text-[#F4F6FC] cursor-pointer">
+<span class="material-symbols-outlined text-[13px] text-[#929BAD]" data-icon="code">code</span>
+<span>main.py</span>
+</div>
+</div>
+</div>
+<!-- ==================== 5. CODE EDITOR CANVAS ==================== -->
+<main class="flex-1 bg-[#0D1117] relative flex flex-col overflow-hidden">
+<div class="w-full bg-[#11151D] border-b border-[#1E2638] px-2 py-1 flex items-center justify-between text-[#929BAD] z-20">
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-[#171D28] hover:text-[#F4F6FC] text-[#929BAD]" title="Undo"><span class="material-symbols-outlined text-[16px]">undo</span></button>
+<button class="p-1 rounded hover:bg-[#171D28] hover:text-[#F4F6FC] text-[#929BAD]" title="Redo"><span class="material-symbols-outlined text-[16px]">redo</span></button>
+<button class="p-1 rounded hover:bg-[#171D28] hover:text-[#F4F6FC] text-[#929BAD]" title="Format"><span class="material-symbols-outlined text-[16px]">auto_fix_high</span></button>
+</div>
+<div class="flex items-center gap-1 font-label-md text-label-md text-[#5685FF]">
+<button class="px-1.5 py-0.5 rounded bg-[#171D28] border border-[#1E2638] hover:text-[#F4F6FC] font-code-block text-code-block">:</button>
+<button class="px-1.5 py-0.5 rounded bg-[#171D28] border border-[#1E2638] hover:text-[#F4F6FC] font-code-block text-code-block">"</button>
+<button class="px-1.5 py-0.5 rounded bg-[#171D28] border border-[#1E2638] hover:text-[#F4F6FC] font-code-block text-code-block">()</button>
+<button class="px-1.5 py-0.5 rounded bg-[#171D28] border border-[#1E2638] hover:text-[#F4F6FC] font-code-block text-code-block">{}</button>
+</div>
+</div>
+<div class="flex-1 overflow-x-auto overflow-y-auto custom-scrollbar flex bg-[#0D1117] py-2">
+<div class="select-none text-[#4B5565] font-code-block text-code-block text-right pr-3 pl-2.5 space-y-0 leading-[22px] border-r border-[#1E2638] min-w-[36px]">
+<div>01</div><div>02</div><div>03</div><div>04</div><div>05</div><div>06</div><div class="text-[#5685FF] font-semibold">07</div><div>08</div><div>09</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div>
+</div>
+<div class="flex-1 pl-3 pr-4 font-code-block text-code-block leading-[22px] whitespace-pre select-text">
+<div><span class="text-[#FF7B72]">from</span> <span class="text-[#79C0FF]">fastapi</span> <span class="text-[#FF7B72]">import</span> <span class="text-[#FFA657]">FastAPI</span>, <span class="text-[#FFA657]">BackgroundTasks</span></div>
+<div><span class="text-[#FF7B72]">import</span> <span class="text-[#79C0FF]">asyncio</span>, <span class="text-[#79C0FF]">logging</span></div>
+<div><span class="text-[#4B5565] italic"># S.A.M. Autonomous runtime microservice</span></div>
+<div><span class="text-[#79C0FF]">app</span> = <span class="text-[#FFA657]">FastAPI</span>(title=<span class="text-[#A5D6FF]">"S.A.M. Worker API"</span>)</div>
+<div></div>
+<div><span class="text-[#D2A8FF]">@app.post</span>(<span class="text-[#A5D6FF]">"/v1/tasks/dispatch"</span>)</div>
+<div class="relative bg-[#171D28] -mx-3 px-3 border-l-2 border-[#5685FF] flex items-center">
+<span><span class="text-[#FF7B72]">async def</span> <span class="text-[#D2A8FF]">dispatch_task</span>(payload: <span class="text-[#FFA657]">dict</span>):</span>
+<span class="inline-block w-2 h-4 bg-[#5685FF] ml-0.5 animate-pulse"></span>
+</div>
+<div> <span class="text-[#4B5565] italic"># Autonomous async worker orchestration</span></div>
+<div> <span class="text-[#79C0FF]">task_id</span> = payload.<span class="text-[#D2A8FF]">get</span>(<span class="text-[#A5D6FF]">'task_id'</span>, <span class="text-[#A5D6FF]">'auto-gen'</span>)</div>
+<div> <span class="text-[#79C0FF]">logging</span>.<span class="text-[#D2A8FF]">info</span>(f<span class="text-[#A5D6FF]">"Dispatching task {task_id} to swarm"</span>)</div>
+<div> <span class="text-[#FF7B72]">await</span> asyncio.<span class="text-[#D2A8FF]">sleep</span>(<span class="text-[#79C0FF]">0.05</span>)</div>
+<div> <span class="text-[#FF7B72]">return</span> {</div>
+<div>   <span class="text-[#A5D6FF]">"status"</span>: <span class="text-[#A5D6FF]">"dispatched"</span>,</div>
+<div>   <span class="text-[#A5D6FF]">"worker"</span>: <span class="text-[#A5D6FF]">"sam-worker-01"</span>,</div>
+<div>   <span class="text-[#A5D6FF]">"latency_ms"</span>: <span class="text-[#79C0FF]">12.4</span></div>
+<div> }</div>
+</div>
+</div>
+<button class="absolute bottom-3 right-3 bg-[#1E2534] hover:bg-[#283044] border border-[#9B72FF] text-[#F4F6FC] rounded-full p-2.5 shadow-lg flex items-center gap-1.5 active:scale-95 transition-transform z-30" onclick="window.location.href='06_ai_chat.html'" title="Ask S.A.M. Copilot">
+<span class="material-symbols-outlined text-[18px] text-[#9B72FF]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-label-sm font-semibold text-[#9B72FF] pr-1">Ask Copilot</span>
+</button>
+</main>
+<!-- ==================== 6. BOTTOM TERMINAL ==================== -->
+<section class="w-full bg-[#11151D] border-t border-[#1E2638] flex flex-col z-30" id="terminal-panel">
+<div class="px-3 py-1 bg-[#141923] border-b border-[#1E2638] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 text-[#F4F6FC] font-label-md text-label-md font-medium border-b-2 border-[#42D6A4] pb-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4] animate-ping"></span>
+<span>Terminal</span>
+</button>
+<button class="flex items-center gap-1 text-[#929BAD] hover:text-[#F4F6FC] font-label-md text-label-md pb-0.5" onclick="window.location.href='11_live_preview.html'"><span>Live Preview</span></button>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-[#929BAD] hover:text-[#F4F6FC]" onclick="document.getElementById('terminal-body').innerHTML=''"><span class="material-symbols-outlined text-[14px]">block</span></button>
+</div>
+</div>
+<div class="bg-[#090B10] p-2.5 font-code-block text-code-block leading-[18px] max-h-24 overflow-y-auto custom-scrollbar select-text space-y-0.5" id="terminal-body">
+<div class="text-[#929BAD]"><span class="text-[#5685FF]">sam@android</span>:<span class="text-[#9B72FF]">~/my-project</span>$ python -m pytest tests/</div>
+<div class="text-[#F4F6FC]">tests/test_app.py::<span class="text-[#42D6A4]">test_dispatch</span> <span class="text-[#42D6A4] font-semibold">PASSED</span> [100%]</div>
+</div>
+</section>
+<!-- ==================== 7. BOTTOM RUN BAR ==================== -->
+<footer class="w-full bg-[#11151D] border-t border-[#1E2638] px-3 py-2 flex items-center justify-between gap-2 z-40">
+<div class="flex items-center gap-2 flex-1">
+<button class="flex-1 h-9 rounded bg-[#42D6A4] hover:bg-opacity-90 active:scale-95 text-[#002115] font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 transition-all" onclick="window.location.href='11_live_preview.html'">
+<span class="material-symbols-outlined text-[17px]">play_arrow</span>
+<span>RUN</span>
+</button>
+<button class="flex-1 h-9 rounded bg-[#171D28] hover:bg-[#1E2534] active:scale-95 border border-[#1E2638] hover:border-[#5685FF] text-[#F4F6FC] font-label-md text-label-md font-medium flex items-center justify-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px] text-[#5685FF]">android</span>
+<span>BUILD APK</span>
+</button>
+</div>
+</footer>
+<script>
+function toggleExplorerModal() {
+  alert("Opening Project Explorer: src/, tests/, pytest.ini, requirements.txt");
+}
+function toggleTerminalPanel() {
+  const b = document.getElementById('terminal-body');
+  b.classList.toggle('hidden');
+}
+</script>
+</body></html>

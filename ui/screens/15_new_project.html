@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>S.A.M. - Create New Project</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#37393f",
+            "on-primary-fixed": "#00174a",
+            "outline": "#8d909f",
+            "secondary": "#d0bcff",
+            "secondary-fixed": "#e9ddff",
+            "on-tertiary-container": "#003122",
+            "tertiary-fixed": "#6dfbc6",
+            "primary-fixed": "#dbe1ff",
+            "inverse-surface": "#e2e2e9",
+            "on-secondary-container": "#c3abff",
+            "surface-variant": "#33353a",
+            "surface-tint": "#b3c5ff",
+            "on-tertiary-fixed": "#002115",
+            "surface": "#111318",
+            "on-primary-container": "#002468",
+            "on-surface-variant": "#c3c6d6",
+            "error": "#ffb4ab",
+            "on-surface": "#e2e2e9",
+            "on-primary-fixed-variant": "#003ea6",
+            "surface-dim": "#111318",
+            "tertiary-container": "#00a579",
+            "on-tertiary-fixed-variant": "#00513a",
+            "tertiary": "#4cdeab",
+            "tertiary-fixed-dim": "#4cdeab",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#2e3036",
+            "surface-container-lowest": "#0c0e13",
+            "on-error": "#690005",
+            "on-tertiary": "#003827",
+            "surface-container-highest": "#33353a",
+            "on-secondary": "#3b0091",
+            "outline-variant": "#434654",
+            "surface-container-low": "#1a1b21",
+            "on-background": "#e2e2e9",
+            "primary-fixed-dim": "#b3c5ff",
+            "error-container": "#93000a",
+            "primary": "#b3c5ff",
+            "inverse-primary": "#1a55ce",
+            "on-primary": "#002a76",
+            "surface-container-high": "#282a2f",
+            "surface-container": "#1e1f25",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-secondary-fixed": "#23005c",
+            "background": "#111318",
+            "secondary-container": "#5625b6",
+            "primary-container": "#5f8bff",
+            "on-secondary-fixed-variant": "#5321b4"
+          },
+          fontFamily: {
+            "code-block": ["JetBrains Mono"],
+            "body": ["Inter"],
+            "mono": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .touch-target { min-height: 44px; min-width: 44px; }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center items-start">
+<div class="w-full max-w-md min-h-screen bg-surface-container-lowest flex flex-col relative pb-32">
+  <!-- System Status Bar -->
+  <header class="w-full bg-surface-container-low px-4 pt-2 pb-1.5 flex justify-between items-center text-on-surface-variant text-[11px] font-mono select-none z-50">
+    <div class="flex items-center gap-1 font-semibold text-on-surface">
+      <span>09:41</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-tertiary inline-block ml-0.5"></span>
+    </div>
+    <div class="flex items-center gap-2 text-on-surface-variant">
+      <span class="text-[10px] tracking-tight">5G</span>
+      <span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span>
+      <span class="material-symbols-outlined text-[14px]">wifi</span>
+      <div class="flex items-center gap-0.5">
+        <span class="text-[10px] text-on-surface">98%</span>
+        <span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings: 'FILL' 1;">battery_charging_90</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top App Bar -->
+  <nav class="sticky top-0 z-40 bg-surface-container-low/95 backdrop-blur-md px-4 py-2 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-2">
+      <a href="14_projects.html" aria-label="Navigate Back" class="touch-target flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </a>
+      <div>
+        <h1 class="text-[17px] font-semibold text-on-surface leading-tight">Create New Project</h1>
+        <div class="flex items-center gap-1.5 mt-0.5">
+          <span class="font-mono text-[10px] text-primary font-medium tracking-wide">S.A.M.</span>
+          <span class="text-outline-variant font-mono text-[10px]">/</span>
+          <span class="font-mono text-[10px] text-on-surface-variant">NEW_WORKSPACE_AST</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="bg-surface-container-high px-2 py-0.5 rounded border border-outline-variant flex items-center gap-1">
+        <span class="font-mono text-[10px] text-primary font-medium">STEP 1</span>
+        <span class="font-mono text-[10px] text-outline-variant">/</span>
+        <span class="font-mono text-[10px] text-on-surface-variant">2</span>
+      </div>
+      <a href="19_settings.html" class="touch-target flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors">
+        <span class="material-symbols-outlined text-[20px]">help_outline</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 px-4 pt-4 space-y-4">
+    <!-- Wizard Header Subtitle -->
+    <section class="bg-surface-container-low border border-outline-variant rounded-lg p-3.5">
+      <div class="flex items-start justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
+            <span class="font-mono text-[10px] text-tertiary uppercase tracking-wider font-semibold">Autonomous Scaffolding Engine</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Configure your repository parameters and runtime environment. S.A.M. will compile the file tree and initialize autonomous AST vectors.
+          </p>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant text-[22px] flex-shrink-0">terminal</span>
+      </div>
+    </section>
+
+    <!-- Form Section: Repository Identifiers -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <h2 class="font-mono text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[14px] text-primary">folder_open</span>
+          Project Identifiers
+        </h2>
+        <span class="font-mono text-[10px] text-outline-variant">Spec v2.4</span>
+      </div>
+      <!-- Project Name -->
+      <div class="space-y-1.5">
+        <label class="flex items-center justify-between font-mono text-xs text-on-surface font-medium" for="projectName">
+          <span class="flex items-center gap-1">
+            Project Name <span class="text-error font-mono">*</span>
+          </span>
+          <span class="text-[10px] text-outline-variant">a-z, 0-9, hyphen</span>
+        </label>
+        <div class="relative flex items-center">
+          <div class="absolute left-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]">folder_code</span>
+          </div>
+          <input class="w-full h-11 bg-surface-container-lowest text-on-surface font-mono text-sm pl-10 pr-20 rounded-lg border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-colors placeholder:text-outline" id="projectName" placeholder="e.g., MyAwesomeApp" type="text" value="MyAwesomeApp"/>
+          <div class="absolute right-2.5 flex items-center gap-1">
+            <span class="font-mono text-[10px] text-tertiary bg-surface-container-high px-1.5 py-0.5 rounded border border-outline-variant flex items-center gap-1">
+              <span class="w-1 h-1 rounded-full bg-tertiary"></span> VALID
+            </span>
+          </div>
+        </div>
+        <p class="font-mono text-[10px] text-outline flex items-center gap-1 pl-0.5">
+          <span class="material-symbols-outlined text-[12px]">subdirectory_arrow_right</span>
+          Destination: <span class="text-on-surface-variant">~/workspaces/MyAwesomeApp</span>
+        </p>
+      </div>
+      <!-- Package Name -->
+      <div class="space-y-1.5">
+        <label class="flex items-center justify-between font-mono text-xs text-on-surface font-medium" for="packageName">
+          <span class="flex items-center gap-1">
+            Package Name / Namespace <span class="text-error font-mono">*</span>
+          </span>
+          <span class="text-[10px] text-outline-variant">Reverse FQDN</span>
+        </label>
+        <div class="relative flex items-center">
+          <div class="absolute left-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]">domain_verification</span>
+          </div>
+          <input class="w-full h-11 bg-surface-container-lowest text-on-surface font-mono text-sm pl-10 pr-3 rounded-lg border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-colors placeholder:text-outline" id="packageName" placeholder="e.g., com.sam.myawesomeapp" type="text" value="com.sam.myawesomeapp"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Framework & Language Selection -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="font-mono text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[14px] text-primary">layers</span>
+            Framework &amp; Language
+          </h2>
+          <p class="text-xs text-on-surface-variant">Select initial scaffolding &amp; AST parser</p>
+        </div>
+        <span class="font-mono text-[10px] text-secondary bg-secondary-container/30 px-1.5 py-0.5 rounded border border-secondary-container">
+          LLM READY
+        </span>
+      </div>
+      <div aria-label="Framework Selection" class="grid grid-cols-2 gap-2" role="radiogroup">
+        <!-- Python -->
+        <div class="relative p-3 bg-surface-container-low border border-outline-variant rounded-lg flex flex-col justify-between h-28 cursor-pointer hover:bg-surface-container hover:border-outline transition-colors active:scale-[0.98]">
+          <div class="flex items-start justify-between">
+            <div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface">
+              <span class="material-symbols-outlined text-[20px]">terminal</span>
+            </div>
+            <span class="font-mono text-[10px] text-outline-variant">v3.12</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-on-surface">Python</div>
+            <div class="font-mono text-[10px] text-on-surface-variant">FastAPI / Uvicorn</div>
+          </div>
+        </div>
+        <!-- Kotlin (Active) -->
+        <div class="relative p-3 bg-primary-container/15 border-2 border-primary-container rounded-lg flex flex-col justify-between h-28 cursor-pointer active:scale-[0.98] transition-all">
+          <div class="absolute top-2 right-2 w-5 h-5 bg-primary-container rounded flex items-center justify-center text-on-primary-container shadow-sm">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+          </div>
+          <div class="flex items-start justify-between">
+            <div class="w-8 h-8 rounded bg-primary-container/30 border border-primary-container/40 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-primary flex items-center gap-1">
+              Kotlin <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+            </div>
+            <div class="font-mono text-[10px] text-on-surface">Android / Compose</div>
+          </div>
+        </div>
+        <!-- React Native -->
+        <div class="relative p-3 bg-surface-container-low border border-outline-variant rounded-lg flex flex-col justify-between h-28 cursor-pointer hover:bg-surface-container hover:border-outline transition-colors active:scale-[0.98]">
+          <div class="flex items-start justify-between">
+            <div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface">
+              <span class="material-symbols-outlined text-[20px]">code</span>
+            </div>
+            <span class="font-mono text-[10px] text-outline-variant">0.74</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-on-surface">React Native</div>
+            <div class="font-mono text-[10px] text-on-surface-variant">TypeScript / Expo</div>
+          </div>
+        </div>
+        <!-- Modern Web -->
+        <div class="relative p-3 bg-surface-container-low border border-outline-variant rounded-lg flex flex-col justify-between h-28 cursor-pointer hover:bg-surface-container hover:border-outline transition-colors active:scale-[0.98]">
+          <div class="flex items-start justify-between">
+            <div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface">
+              <span class="material-symbols-outlined text-[20px]">data_object</span>
+            </div>
+            <span class="font-mono text-[10px] text-outline-variant">ESNext</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-on-surface">Modern Web</div>
+            <div class="font-mono text-[10px] text-on-surface-variant">Vanilla / Vite Stack</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Output Preview -->
+    <section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3">
+      <div class="flex items-center justify-between text-outline-variant font-mono text-[10px] pb-1.5 border-b border-outline-variant/60">
+        <span class="flex items-center gap-1 text-on-surface-variant">
+          <span class="material-symbols-outlined text-[12px] text-primary">data_array</span>
+          SCAFFOLDING_PREVIEW.sh
+        </span>
+        <span class="text-tertiary">READY_TO_EXECUTE</span>
+      </div>
+      <div class="pt-2 font-mono text-xs text-on-surface-variant leading-relaxed space-y-0.5">
+        <div><span class="text-outline">sam:~$</span> mkdir -p ~/workspaces/MyAwesomeApp &amp;&amp; cd $_</div>
+        <div><span class="text-outline">sam:~$</span> git init -b main</div>
+        <div><span class="text-outline">sam:~$</span> sam generate --target=kotlin-android --pkg=com.sam.myawesomeapp</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Action Area -->
+  <footer class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-surface-container-low/95 backdrop-blur-md px-4 pt-3 pb-2 z-50">
+    <a href="04_ai_ide_workspace.html" class="w-full h-12 bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-semibold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg">
+      <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+      <span>Initialize Workspace</span>
+      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </a>
+    <div class="flex items-center justify-between px-1 pt-2 pb-1 text-on-surface-variant font-mono text-[10px]">
+      <span class="flex items-center gap-1">
+        <span class="material-symbols-outlined text-[12px] text-tertiary">check_circle</span>
+        Local sandbox ready (3.2 GB free)
+      </span>
+      <a href="14_projects.html" class="text-outline hover:text-on-surface transition-colors underline">Cancel</a>
+    </div>
+    <div class="w-full flex justify-center items-center pt-2 pb-1">
+      <div class="w-32 h-1 bg-outline rounded-full"></div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

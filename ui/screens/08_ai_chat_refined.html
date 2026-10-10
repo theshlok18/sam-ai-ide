@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>S.A.M. // AI Chat Interface (Refined)</title>
+  <!-- Typography & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed-dim": "#b3c5ff",
+            "inverse-surface": "#e2e2e9",
+            "primary": "#5685FF",
+            "surface-variant": "#171D28",
+            "surface-container": "#11151D",
+            "on-background": "#F4F6FC",
+            "primary-container": "#5685FF",
+            "surface": "#090B10",
+            "on-surface": "#F4F6FC",
+            "secondary": "#9B72FF",
+            "surface-bright": "#1E2535",
+            "tertiary": "#42D6A4",
+            "background": "#090B10",
+            "outline-variant": "#232B3B",
+            "border-subtle": "#1F2636",
+            "border-card": "#283247",
+            "text-muted": "#929BAD",
+            "text-subtle": "#5D6678"
+          },
+          fontFamily: {
+            "code-block": ["JetBrains Mono", "monospace"],
+            "headline": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar { width: 4px; }
+    .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #232B3B; border-radius: 2px; }
+  </style>
+</head>
+<body class="bg-[#090B10] text-[#F4F6FC] font-body antialiased h-screen w-screen overflow-hidden flex justify-center selection:bg-[#5685FF]/30 selection:text-[#F4F6FC]">
+<div class="relative w-full max-w-md h-full bg-[#090B10] flex flex-col justify-between overflow-hidden border-x border-[#1F2636]/60 shadow-2xl">
+  <!-- ANDROID HARDWARE STATUS BAR -->
+  <header class="w-full bg-[#11151D] px-4 pt-2.5 pb-1 flex items-center justify-between text-[11px] font-mono text-[#929BAD] select-none z-40">
+    <div class="flex items-center gap-1.5 font-medium tracking-tight text-[#F4F6FC]">
+      <span>09:41</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4] inline-block ml-0.5"></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-[10px] tracking-wider font-mono">5G</span>
+      <span class="material-symbols-outlined text-[15px] leading-none">wifi</span>
+      <div class="flex items-center gap-0.5">
+        <span class="text-[10px] font-mono">98%</span>
+        <span class="material-symbols-outlined text-[14px] leading-none">battery_full</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- COMPACT TOP NAVIGATION BAR -->
+  <nav class="w-full bg-[#11151D] px-3.5 py-2 flex items-center justify-between border-b border-[#1F2636] z-40 select-none">
+    <div class="flex items-center gap-2 min-w-0">
+      <a href="01_home_dashboard.html" class="w-9 h-9 flex items-center justify-center rounded-lg bg-[#171D28] text-[#F4F6FC] hover:border hover:border-[#5685FF] transition-all active:scale-95 shrink-0" title="Back">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </a>
+      <div class="flex items-center gap-2 truncate">
+        <h1 class="text-[15px] font-semibold text-[#F4F6FC] tracking-tight truncate shrink-0">S.A.M. AI Chat</h1>
+        <button class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#171D28] border border-[#283247] hover:border-[#5685FF] active:bg-[#1E2535] transition-all text-left group" id="model-pill-btn" onclick="openModelModal()">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#5685FF] group-hover:scale-125 transition-transform"></span>
+          <span class="text-[11px] font-mono font-medium text-[#c3c6d6] group-hover:text-[#F4F6FC] truncate max-w-[105px]" id="current-model-label">Claude 3.5 Sonnet</span>
+          <span class="material-symbols-outlined text-[14px] text-[#929BAD] group-hover:text-[#F4F6FC]">keyboard_arrow_down</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center gap-0.5 shrink-0">
+      <button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#171D28] text-[#929BAD] hover:text-[#F4F6FC] active:scale-95 transition-colors" onclick="resetConversation()" title="New Conversation">
+        <span class="material-symbols-outlined text-[20px]">edit_note</span>
+      </button>
+      <a href="13_ai_providers_models.html" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#171D28] text-[#929BAD] hover:text-[#F4F6FC] active:scale-95 transition-colors" title="Providers">
+        <span class="material-symbols-outlined text-[20px]">hub</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- SUB-BAR CONTEXT BREADCRUMB -->
+  <div class="w-full bg-[#0D1017] px-3.5 py-1.5 border-b border-[#1F2636] flex items-center justify-between text-[11px] font-mono z-30 select-none" id="project-context-bar">
+    <div class="flex items-center gap-1.5 text-[#929BAD] min-w-0">
+      <span class="material-symbols-outlined text-[14px] text-[#42D6A4]">fork_right</span>
+      <span class="text-[#F4F6FC] font-medium truncate">helios-core-engine</span>
+      <span class="text-[#5D6678]">/</span>
+      <span class="text-[#9B72FF]">main</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4] ml-1 shrink-0"></span>
+      <span class="text-[9.5px] text-[#929BAD] font-mono hidden sm:inline">Synced 2m ago</span>
+    </div>
+    <div class="flex items-center gap-1.5 shrink-0 ml-2">
+      <button class="px-1.5 py-0.5 bg-[#171D28] hover:bg-[#1E2535] border border-[#232B3B] text-[9.5px] rounded font-mono text-[#929BAD] hover:text-[#F4F6FC] transition-colors flex items-center gap-1" onclick="showToast('Repository branch synced')">
+        <span class="material-symbols-outlined text-[12px] text-[#42D6A4]">sync</span>
+        <span>Synced</span>
+      </button>
+      <button class="w-5 h-5 flex items-center justify-center rounded text-[#5D6678] hover:text-[#F4F6FC] hover:bg-[#171D28] transition-colors" onclick="document.getElementById('project-context-bar').classList.add('hidden'); showToast('Repository detached');" title="Detach context">
+        <span class="material-symbols-outlined text-[13px]">close</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CONVERSATION AREA -->
+  <main class="flex-1 overflow-y-auto custom-scroll p-4 space-y-5 bg-[#090B10]" id="chat-viewport">
+    <div class="flex items-center justify-center my-0.5 select-none">
+      <div class="px-3 py-1 rounded-full bg-[#11151D] border border-[#1F2636] text-[11px] text-[#929BAD] font-mono flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[13px] text-[#42D6A4]">schedule</span>
+        <span>Today, 09:38 AM • Context: helios-core-engine</span>
+      </div>
+    </div>
+
+    <!-- USER MESSAGE -->
+    <div class="flex flex-col items-end pl-6">
+      <div class="flex items-center gap-1.5 mb-1.5 text-[11px] font-mono text-[#929BAD]">
+        <span class="text-[#c3c6d6] font-medium">Lead Dev</span>
+        <span>•</span>
+        <span>09:39 AM</span>
+      </div>
+      <div class="w-full bg-[#171D28] border border-[#283247] rounded-xl p-3.5 text-[14px] leading-relaxed text-[#F4F6FC] shadow-sm">
+        How can we optimize memory allocation in the Tokio async worker pool for our high-throughput RPC pipeline in <span class="text-[#5685FF] font-mono text-[12px] bg-[#11151D] px-1.5 py-0.5 rounded border border-[#232B3B]">helios-core-engine</span>?
+      </div>
+    </div>
+
+    <!-- AI MESSAGE -->
+    <div class="flex flex-col items-start pr-0 space-y-2.5">
+      <div class="flex items-center justify-between w-full text-[11px] font-mono">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-md bg-[#171D28] border border-[#5685FF]/60 flex items-center justify-center text-[#5685FF] shadow-sm">
+            <span class="material-symbols-outlined text-[14px]">terminal</span>
+          </div>
+          <span class="font-semibold text-[#5685FF]">S.A.M. v2.4</span>
+          <span class="text-[#5D6678]">•</span>
+          <span class="text-[#9B72FF]">Autonomous Dev</span>
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-[#42D6A4] bg-[#42D6A4]/15 px-2 py-0.5 rounded border border-[#42D6A4]/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+          <span>Complete</span>
+        </div>
+      </div>
+      <div class="w-full bg-[#11151D] border border-[#1F2636] rounded-xl p-3.5 space-y-3.5 shadow-md">
+        <p class="text-[13.5px] text-[#F4F6FC] leading-relaxed">
+          To eliminate per-frame heap overhead on high-frequency RPC ingress, replace dynamic <code class="text-[11.5px] font-mono text-[#42D6A4] bg-[#090B10] px-1.5 py-0.5 rounded border border-[#232B3B]">tokio::sync::mpsc</code> channels with bounded crossbeam ring channels combined with pre-pinned slab buffers and cache-line aligned atomic tracking:
+        </p>
+        <div class="w-full bg-[#0D1017] border border-[#283247] rounded-lg overflow-hidden shadow-inner">
+          <div class="bg-[#171D28] px-3 py-2 border-b border-[#232B3B] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="px-1.5 py-0.5 bg-[#5685FF]/15 text-[#5685FF] border border-[#5685FF]/40 rounded text-[9.5px] font-mono uppercase font-bold tracking-wider">RUST</span>
+              <span class="text-[11px] font-mono text-[#929BAD]">src/worker/pool.rs</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button class="flex items-center gap-1 px-2.5 py-1 bg-[#11151D] hover:bg-[#1E2535] border border-[#283247] rounded text-[10.5px] font-mono text-[#F4F6FC] active:scale-95 transition-all" onclick="showToast('Code copied')">
+                <span class="material-symbols-outlined text-[13px]">content_copy</span>
+                <span>Copy Code</span>
+              </button>
+              <a href="04_ai_ide_workspace.html" class="flex items-center gap-1 px-2.5 py-1 bg-[#5685FF]/15 hover:bg-[#5685FF]/25 border border-[#5685FF]/40 rounded text-[10.5px] font-mono text-[#b3c5ff] active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[13px]">launch</span>
+                <span>Open in AI IDE</span>
+              </a>
+            </div>
+          </div>
+          <div class="p-3 overflow-x-auto text-[11px] font-mono leading-relaxed custom-scroll bg-[#090B10]">
+            <pre class="font-mono"><span class="text-[#5D6678] select-none">01 </span><span class="text-[#9B72FF] font-semibold">use</span> <span class="text-[#c3c6d6]">std::sync::atomic::{</span><span class="text-[#42D6A4]">AtomicUsize</span><span class="text-[#c3c6d6]">, </span><span class="text-[#42D6A4]">Ordering</span><span class="text-[#c3c6d6]">};</span>
+<span class="text-[#5D6678] select-none">02 </span><span class="text-[#9B72FF] font-semibold">use</span> <span class="text-[#c3c6d6]">std::sync::</span><span class="text-[#42D6A4]">Arc</span><span class="text-[#c3c6d6]">;</span>
+<span class="text-[#5D6678] select-none">03 </span><span class="text-[#9B72FF] font-semibold">use</span> <span class="text-[#c3c6d6]">crossbeam::channel::{</span><span class="text-[#5685FF]">bounded</span><span class="text-[#c3c6d6]">, </span><span class="text-[#42D6A4]">Sender</span><span class="text-[#c3c6d6]">, </span><span class="text-[#42D6A4]">Receiver</span><span class="text-[#c3c6d6]">};</span>
+<span class="text-[#5D6678] select-none">04 </span>
+<span class="text-[#5D6678] select-none">05 </span><span class="text-[#5D6678] font-normal">// Pre-pinned ring segment configuration</span>
+<span class="text-[#5D6678] select-none">06 </span><span class="text-[#5685FF] font-semibold">pub struct</span> <span class="text-[#42D6A4] font-semibold">WorkerPoolConfig</span> <span class="text-[#c3c6d6]">{</span>
+<span class="text-[#5D6678] select-none">07 </span>    <span class="text-[#F4F6FC]">pub capacity:</span> <span class="text-[#42D6A4]">usize</span><span class="text-[#c3c6d6]">,</span>
+<span class="text-[#5D6678] select-none">08 </span>    <span class="text-[#F4F6FC]">pub active_slots:</span> <span class="text-[#42D6A4]">Arc&lt;AtomicUsize&gt;</span><span class="text-[#c3c6d6]">,</span>
+<span class="text-[#5D6678] select-none">09 </span>    <span class="text-[#F4F6FC]">pub slab_buffer_bytes:</span> <span class="text-[#42D6A4]">usize</span><span class="text-[#c3c6d6]">,</span>
+<span class="text-[#5D6678] select-none">10 </span><span class="text-[#c3c6d6]">}</span></pre>
+          </div>
+        </div>
+
+        <div class="pt-2.5 border-t border-[#1F2636] flex items-center justify-between select-none">
+          <div class="flex items-center gap-1">
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#171D28] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" onclick="showToast('Response copied')">
+              <span class="material-symbols-outlined text-[17px]">content_copy</span>
+            </button>
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#171D28] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" onclick="regenerateAnswer()">
+              <span class="material-symbols-outlined text-[17px]">autorenew</span>
+            </button>
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#171D28] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" id="tts-btn" onclick="toggleAudioSpeech()">
+              <span class="material-symbols-outlined text-[17px]">volume_up</span>
+            </button>
+          </div>
+          <a href="04_ai_ide_workspace.html" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#171D28] hover:bg-[#1E2535] border border-[#283247] hover:border-[#5685FF] text-[11px] font-mono text-[#F4F6FC] active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[14px] text-[#5685FF]">open_in_new</span>
+            <span>Open in AI IDE</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MESSAGE COMPOSER -->
+  <footer class="w-full bg-[#11151D] border-t border-[#1F2636] px-3.5 pt-3 pb-1 select-none z-30">
+    <div class="bg-[#171D28] border border-[#283247] focus-within:border-[#5685FF] rounded-xl p-2.5 transition-all duration-150 shadow-inner">
+      <textarea class="w-full bg-transparent border-0 p-0 text-[14px] text-[#F4F6FC] placeholder-[#5D6678] focus:ring-0 focus:outline-none resize-none leading-relaxed custom-scroll max-h-28" id="chat-input" onkeydown="handleInputKey(event)" placeholder="Message S.A.M. or paste code..." rows="2"></textarea>
+      <div class="flex items-center justify-between pt-2 border-t border-[#1F2636]/80 mt-1">
+        <div class="flex items-center gap-1">
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#1E2535] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" onclick="showToast('Attach file...')" title="Attach file">
+            <span class="material-symbols-outlined text-[19px]">attach_file</span>
+          </button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#1E2535] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" onclick="insertCodeTemplate()" title="Insert snippet">
+            <span class="material-symbols-outlined text-[19px]">code</span>
+          </button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#1E2535] text-[#929BAD] hover:text-[#F4F6FC] transition-colors" id="voice-dictation-btn" onclick="toggleVoiceDictation()" title="Voice input">
+            <span class="material-symbols-outlined text-[19px]">mic</span>
+          </button>
+        </div>
+        <button class="h-8 px-3.5 bg-[#5685FF] hover:bg-[#4775f0] active:scale-95 text-[#090B10] font-semibold rounded-lg flex items-center gap-1 transition-all shadow-md" id="send-button" onclick="handleSend()">
+          <span class="text-[12px] font-mono uppercase font-bold tracking-wider">Send</span>
+          <span class="material-symbols-outlined text-[17px] font-bold">arrow_upward</span>
+        </button>
+      </div>
+    </div>
+    <div class="w-full pt-2.5 pb-1 flex justify-center items-center select-none">
+      <div class="w-32 h-1 bg-[#232B3B] rounded-full"></div>
+    </div>
+  </footer>
+
+  <!-- TOAST CONTAINER -->
+  <div class="hidden absolute bottom-20 left-1/2 -translate-x-1/2 bg-[#171D28] border border-[#5685FF] text-[#F4F6FC] px-3.5 py-1.5 rounded-lg shadow-2xl text-[11px] font-mono z-50 flex items-center gap-2 pointer-events-none transition-all" id="system-toast">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+    <span id="toast-message">Notification</span>
+  </div>
+</div>
+
+<script>
+  let toastTimer;
+  function showToast(message) {
+    const toast = document.getElementById('system-toast');
+    document.getElementById('toast-message').textContent = message;
+    toast.classList.remove('hidden');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.classList.add('hidden'); }, 2200);
+  }
+  let isRecording = false;
+  function toggleVoiceDictation() {
+    isRecording = !isRecording;
+    const btn = document.getElementById('voice-dictation-btn');
+    if (isRecording) {
+      btn.classList.add('text-[#ffb4ab]', 'animate-pulse');
+      showToast('Listening...');
+    } else {
+      btn.classList.remove('text-[#ffb4ab]', 'animate-pulse');
+      showToast('Finished dictation');
+    }
+  }
+  function insertCodeTemplate() {
+    const textarea = document.getElementById('chat-input');
+    textarea.value += "```rust\n// Insert snippet here\n```\n";
+    textarea.focus();
+  }
+  let isSpeaking = false;
+  function toggleAudioSpeech() {
+    isSpeaking = !isSpeaking;
+    const btn = document.getElementById('tts-btn');
+    if (isSpeaking) {
+      btn.classList.add('text-[#5685FF]');
+      showToast('Reading response aloud...');
+    } else {
+      btn.classList.remove('text-[#5685FF]');
+      showToast('Audio playback stopped');
+    }
+  }
+  function regenerateAnswer() {
+    showToast('Regenerating response...');
+  }
+  function resetConversation() {
+    document.getElementById('chat-input').value = '';
+    showToast('Started new conversation');
+  }
+  function handleInputKey(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handleSend();
+    }
+  }
+  function handleSend() {
+    const input = document.getElementById('chat-input');
+    if (!input.value.trim()) return;
+    input.value = '';
+    showToast('S.A.M. response generated');
+  }
+</script>
+</body>
+</html>

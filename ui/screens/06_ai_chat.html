@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>S.A.M. // AI Chat Interface</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    .material-symbols-outlined { font-size: 20px; line-height: 1; display: inline-block; vertical-align: middle; }
+    .custom-scroll::-webkit-scrollbar { width: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #282a2f; border-radius: 2px; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#F4F6FC] font-sans antialiased h-screen w-screen overflow-hidden flex justify-center">
+<div class="relative w-full max-w-md h-full bg-[#090B10] flex flex-col justify-between overflow-hidden border-x border-[#232B3B]/40 shadow-2xl">
+<!-- STATUS BAR -->
+<header class="w-full bg-[#11151D] px-4 pt-2 pb-1.5 flex items-center justify-between text-xs text-[#929BAD] select-none z-50">
+<div class="flex items-center gap-1.5 font-medium text-[#F4F6FC]">
+<span>09:41</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-mono">5G</span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<span class="text-[10px] font-mono">98%</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+</header>
+<!-- TOP APP BAR -->
+<nav class="w-full bg-[#11151D] px-4 py-2.5 flex items-center justify-between border-b border-[#232B3B] z-40 select-none">
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-[#171D28] text-[#F4F6FC]" onclick="window.location.href='01_home_dashboard.html'">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#171D28] border border-[#232B3B]">
+<span class="w-2 h-2 rounded-full bg-[#5685FF] animate-pulse"></span>
+<div class="flex flex-col text-left">
+<span class="text-[9px] text-[#929BAD] uppercase">ACTIVE MODEL</span>
+<span class="text-xs text-[#F4F6FC] font-semibold" id="model-name-label">Claude 3.5 Sonnet</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-[#929BAD] hover:text-white" onclick="window.location.href='13_ai_providers_models.html'" title="Models"><span class="material-symbols-outlined text-[19px]">hub</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-[#929BAD] hover:text-white" onclick="window.location.href='10_voice_assistant.html'" title="Voice"><span class="material-symbols-outlined text-[19px]">mic</span></button>
+</div>
+</nav>
+<!-- CONTEXT BAR -->
+<div class="w-full bg-[#11151D]/90 px-4 py-1.5 border-b border-[#232B3B] flex items-center justify-between text-xs text-[#929BAD]">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[13px] text-[#42D6A4]">fork_right</span>
+<span class="font-mono text-white">helios-core-engine</span>
+<span>/</span>
+<span class="text-[#9B72FF]">main</span>
+</div>
+<span class="px-1.5 py-0.5 bg-[#171D28] text-[9px] rounded font-mono text-[#42D6A4]">SYNCED 2m ago</span>
+</div>
+<!-- CHAT VIEWPORT -->
+<main class="flex-1 overflow-y-auto custom-scroll p-4 space-y-4 bg-[#090B10]" id="chat-viewport">
+<!-- User message -->
+<div class="flex flex-col items-end pl-8">
+<div class="flex items-center gap-1.5 mb-1 text-[11px] text-[#929BAD] font-mono"><span>Lead Dev</span> • <span>09:39 AM</span></div>
+<div class="w-full bg-[#171D28] border border-[#232B3B] rounded-lg p-3 text-sm text-[#F4F6FC]">
+How can we optimize memory allocation in the Tokio async worker pool for our high-throughput RPC pipeline in <span class="text-[#5685FF] font-mono bg-[#11151D] px-1 py-0.5 rounded">helios-core-engine</span>?
+</div>
+</div>
+<!-- AI message -->
+<div class="flex flex-col items-start pr-2">
+<div class="flex items-center gap-2 mb-1 text-[11px] text-[#5685FF] font-mono">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span class="font-semibold">S.A.M. v2.4</span>
+<span class="text-[#9B72FF]">| Autonomous Reasoning</span>
+</div>
+<div class="w-full bg-[#11151D] border border-[#232B3B] rounded-lg p-3 space-y-3">
+<p class="text-sm text-[#F4F6FC] leading-relaxed">
+To eliminate allocation overhead on high-frequency RPC requests, adopt a pre-pinned slab buffer with atomic buffer re-use and crossbeam ring channels:
+</p>
+<!-- Code Lens -->
+<div class="w-full bg-[#090B10] border border-[#232B3B] rounded-lg overflow-hidden">
+<div class="bg-[#171D28] px-3 py-1.5 border-b border-[#232B3B] flex items-center justify-between text-xs">
+<span class="text-[#5685FF] font-mono font-bold">Rust • src/worker/pool.rs</span>
+<button class="px-2 py-0.5 bg-[#5685FF]/20 text-[#5685FF] rounded text-[10px] font-mono" onclick="window.location.href='04_ai_ide_workspace.html'">Open in IDE</button>
+</div>
+<div class="p-3 text-[11px] font-mono leading-[18px] overflow-x-auto text-[#e2e2e9]">
+<pre><span class="text-[#9B72FF]">use</span> std::sync::atomic::{AtomicUsize, Ordering};
+<span class="text-[#9B72FF]">use</span> std::sync::Arc;
+
+<span class="text-[#5685FF] font-semibold">pub struct</span> <span class="text-[#42D6A4]">WorkerPoolConfig</span> {
+    <span class="text-[#F4F6FC]">pub capacity:</span> <span class="text-[#42D6A4]">usize</span>,
+    <span class="text-[#F4F6FC]">pub active_slots:</span> <span class="text-[#42D6A4]">Arc&lt;AtomicUsize&gt;</span>,
+    <span class="text-[#F4F6FC]">pub slab_buffer_bytes:</span> <span class="text-[#42D6A4]">usize</span>,
+}</pre>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#232B3B] text-xs">
+<button class="text-[#929BAD] hover:text-white" onclick="alert('Copied snippet!')"><span class="material-symbols-outlined text-[16px]">content_copy</span></button>
+<button class="px-3 py-1 bg-[#5685FF] text-[#090B10] font-semibold rounded text-xs flex items-center gap-1" onclick="window.location.href='04_ai_ide_workspace.html'">
+<span class="material-symbols-outlined text-[14px]">code</span><span>Open in AI IDE</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- COMPOSER -->
+<footer class="w-full bg-[#11151D] border-t border-[#232B3B] p-3 select-none z-30">
+<div class="bg-[#171D28] border border-[#232B3B] focus-within:border-[#5685FF] rounded-lg p-2">
+<div class="flex items-start gap-1.5">
+<span class="text-xs font-mono text-[#5D6678] pt-1 select-none">sam:~$</span>
+<textarea class="w-full bg-transparent border-0 p-0 text-sm text-white placeholder-[#5D6678] focus:ring-0 focus:outline-none resize-none" id="prompt-input" placeholder="Instruct S.A.M. or paste code..." rows="2"></textarea>
+</div>
+<div class="flex items-center justify-between pt-2 mt-1 border-t border-[#232B3B]">
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 flex items-center justify-center text-[#929BAD] hover:text-white" onclick="window.location.href='14_projects.html'"><span class="material-symbols-outlined text-[18px]">folder_code</span></button>
+<button class="w-7 h-7 flex items-center justify-center text-[#929BAD] hover:text-white" onclick="window.location.href='10_voice_assistant.html'"><span class="material-symbols-outlined text-[18px]">mic</span></button>
+</div>
+<button class="h-7 px-3 bg-[#5685FF] hover:bg-opacity-90 text-[#090B10] font-bold rounded text-xs" onclick="sendMessage()">Run ➔</button>
+</div>
+</div>
+</footer>
+</div>
+<script>
+function sendMessage() {
+  const inp = document.getElementById('prompt-input');
+  if(!inp.value.trim()) return;
+  const view = document.getElementById('chat-viewport');
+  const d = document.createElement('div');
+  d.className = 'flex flex-col items-end pl-8';
+  d.innerHTML = `<div class="w-full bg-[#171D28] border border-[#232B3B] rounded-lg p-3 text-sm text-[#F4F6FC]">${inp.value}</div>`;
+  view.appendChild(d);
+  inp.value = '';
+  view.scrollTop = view.scrollHeight;
+}
+</script>
+</body></html>

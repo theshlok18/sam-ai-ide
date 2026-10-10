@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>S.A.M. - AI Models Configuration</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  .material-symbols-outlined { font-size: 20px; vertical-align: middle; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased min-h-screen flex justify-center items-start">
+<div class="relative w-full max-w-md min-h-screen bg-[#090B10] flex flex-col border-x border-[#232B3B]/40 shadow-2xl overflow-hidden pb-12">
+<!-- Top App Bar -->
+<header class="h-14 bg-[#11151D] px-4 flex items-center justify-between border-b border-[#232B3B] sticky top-0 z-20">
+<div class="flex items-center gap-2">
+<button aria-label="Back" class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#171D28] text-white hover:bg-[#1E2534]" onclick="window.location.href='19_settings.html'">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+</button>
+<div>
+<h1 class="text-sm font-semibold text-white">AI Providers &amp; Models</h1>
+<span class="text-[10px] text-[#5685FF] font-mono">S.A.M. ROUTING ENGINE</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-4 space-y-4">
+<!-- Primary Engine -->
+<article class="bg-[#171D28] border border-[#5685FF] rounded-xl p-4 space-y-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded bg-[#11151D] border border-[#5685FF] flex items-center justify-center text-[#5685FF]">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5"><span class="text-sm font-bold text-white">Google Gemini</span><span class="text-[9px] bg-[#42D6A4]/20 text-[#42D6A4] px-1 rounded font-mono">DEFAULT</span></div>
+<p class="text-[11px] text-[#929BAD]">Gemini 1.5 Pro • 2M Context</p>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-[#42D6A4] animate-pulse"></span>
+</div>
+<div class="bg-[#11151D] p-2 rounded flex justify-between text-xs font-mono">
+<span class="text-[#42D6A4]">✓ Connected (24ms)</span>
+<span class="text-[#5685FF] cursor-pointer" onclick="alert('Connection test successful!')">Test Connection</span>
+</div>
+</article>
+<!-- Providers List -->
+<section class="space-y-2">
+<h3 class="text-xs font-semibold text-[#929BAD] uppercase tracking-wider">Other Providers</h3>
+<div class="bg-[#11151D] border border-[#232B3B] rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[#5685FF]">hub</span>
+<div><div class="text-xs font-semibold text-white">Anthropic Claude</div><div class="text-[10px] text-[#929BAD]">Claude 3.5 Sonnet • 200k Context</div></div>
+</div>
+<button class="px-2.5 py-1 bg-[#171D28] border border-[#232B3B] hover:border-[#5685FF] text-xs text-white rounded" onclick="alert('Anthropic Claude key active!')">Configure</button>
+</div>
+<div class="bg-[#11151D] border border-[#232B3B] rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[#9B72FF]">token</span>
+<div><div class="text-xs font-semibold text-white">OpenAI</div><div class="text-[10px] text-[#929BAD]">GPT-4o, o1-preview • 128k Context</div></div>
+</div>
+<button class="px-2.5 py-1 bg-[#171D28] border border-[#232B3B] hover:border-[#5685FF] text-xs text-white rounded" onclick="alert('Configure OpenAI API key')">Configure</button>
+</div>
+<div class="bg-[#11151D] border border-[#232B3B] rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[#42D6A4]">dns</span>
+<div><div class="text-xs font-semibold text-white">Local Ollama / Air-gapped</div><div class="text-[10px] text-[#929BAD]">127.0.0.1:11434 • Llama 3.3, Qwen</div></div>
+</div>
+<button class="px-2.5 py-1 bg-[#171D28] border border-[#232B3B] hover:border-[#42D6A4] text-xs text-[#42D6A4] rounded" onclick="alert('Ollama daemon listening')">Connect</button>
+</div>
+</section>
+</main>
+</div>
+</body></html>

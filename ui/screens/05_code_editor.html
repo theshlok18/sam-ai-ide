@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>S.A.M. Code Editor</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    .material-symbols-outlined { font-size: 20px; line-height: 1; display: inline-block; vertical-align: middle; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .selection-line { background: rgba(95, 139, 255, 0.16); box-shadow: inset 2px 0 0 0 #5f8bff; }
+</style>
+</head>
+<body class="bg-[#090B10] text-[#e2e2e9] antialiased select-none overflow-x-hidden min-h-screen flex justify-center">
+<div class="w-full max-w-[412px] h-[100dvh] bg-[#090B10] flex flex-col relative overflow-hidden border-x border-[#232B3B]/40 shadow-2xl">
+<!-- 1. Android Status Bar -->
+<header class="w-full h-7 bg-[#11151D] px-4 flex items-center justify-between z-30 select-none border-b border-[#232B3B]">
+<div class="flex items-center gap-1">
+<span class="text-xs text-[#e2e2e9] font-semibold">09:41</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#42D6A4]"></span>
+</div>
+<div class="flex items-center gap-1.5 text-[#929BAD] text-xs">
+<span>5G</span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<span>98%</span>
+<span class="material-symbols-outlined text-[16px] text-[#5685FF]">battery_charging_full</span>
+</div>
+</header>
+<!-- 2. Top App Bar -->
+<nav class="h-12 bg-[#11151D] px-2 flex items-center justify-between border-b border-[#232B3B] z-20">
+<div class="flex items-center gap-1">
+<button aria-label="Back" class="w-8 h-8 flex items-center justify-center rounded-lg text-[#929BAD] hover:text-white" onclick="window.location.href='01_home_dashboard.html'">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col ml-0.5">
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-semibold text-white">MainActivity.kt</span>
+<span class="px-1 rounded bg-[#171D28] text-[9px] text-[#5685FF] font-semibold">KT</span>
+</div>
+<span class="text-[10px] font-mono text-[#929BAD]">app/src/main/java/...</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 flex items-center justify-center rounded text-[#929BAD] hover:text-white"><span class="material-symbols-outlined text-[18px]">undo</span></button>
+<button class="w-7 h-7 flex items-center justify-center rounded text-[#929BAD] hover:text-white"><span class="material-symbols-outlined text-[18px]">redo</span></button>
+<button class="h-7 px-2 bg-[#5685FF] text-[#090B10] text-xs rounded flex items-center gap-1 font-semibold" onclick="window.location.href='11_live_preview.html'">
+<span class="material-symbols-outlined text-[15px]">play_arrow</span><span>Run</span>
+</button>
+</div>
+</nav>
+<!-- 3. Breadcrumb & Status -->
+<div class="h-6 bg-[#171D28] px-3 flex items-center justify-between border-b border-[#232B3B] text-[10px] font-mono text-[#929BAD]">
+<div class="flex items-center gap-1 text-white"><span>MainActivity.kt</span> &gt; <span>MainActivity</span> &gt; <span class="text-[#9B72FF]">onCreate()</span></div>
+<div><span>Ln 51, Col 18</span> • <span>UTF-8</span></div>
+</div>
+<!-- 4. Code Canvas -->
+<main class="flex-1 bg-[#090B10] overflow-y-auto overflow-x-auto relative no-scrollbar font-mono text-xs leading-[20px]">
+<div class="min-w-[460px] pb-32 pt-2 flex">
+<div class="w-10 select-none pr-2 text-right text-[#5D6678] border-r border-[#232B3B] sticky left-0 bg-[#090B10] flex flex-col text-[10px]">
+<div>44</div><div>45</div><div>46</div><div>47</div><div>48</div><div>49</div>
+<div class="text-[#5685FF] font-semibold">50</div><div class="text-[#5685FF] font-semibold">51</div><div class="text-[#5685FF] font-semibold">52</div>
+<div>53</div><div>54</div><div>55</div><div>56</div><div>57</div><div>58</div>
+</div>
+<div class="flex-1 pl-3 font-mono text-[11px] leading-[20px]">
+<div class="text-[#5D6678] italic">// S.A.M. Neural Bridge Dispatcher</div>
+<div><span class="text-[#9B72FF]">@Composable</span></div>
+<div><span class="text-[#9B72FF]">fun</span> <span class="text-[#5685FF]">AutonomousAgentLens</span>(</div>
+<div class="pl-4"><span>viewModel:</span> <span class="text-[#42D6A4]">SamKernelViewModel</span> = <span class="text-[#5685FF]">viewModel</span>(),</div>
+<div class="pl-4"><span>modifier:</span> <span class="text-[#42D6A4]">Modifier</span> = <span class="text-[#42D6A4]">Modifier</span>.<span class="text-[#5685FF]">fillMaxSize</span>()</div>
+<div>) {</div>
+<div class="selection-line pl-4 text-white"><span class="text-[#9B72FF]">val</span> nodeState <span class="text-[#9B72FF]">by</span> viewModel.activeTelemetry.<span class="text-[#5685FF]">collectAsState</span>()</div>
+<div class="selection-line pl-4 text-white relative">
+<span><span class="text-[#9B72FF]">val</span> agentSession = <span class="text-[#5685FF]">rememberCoroutineScope</span>()</span>
+<span class="inline-block w-0.5 h-3.5 bg-[#5685FF] ml-0.5 animate-pulse"></span>
+</div>
+<div class="selection-line pl-4 text-white"><span class="text-[#9B72FF]">LaunchedEffect</span>(nodeState.<span class="text-[#42D6A4]">isConnected</span>) {</div>
+<div class="pl-8 text-white"><span class="text-[#9B72FF]">if</span> (nodeState.<span class="text-[#42D6A4]">isConnected</span>) {</div>
+<div class="pl-12 text-white">viewModel.<span class="text-[#5685FF]">syncRuntimeBuffer</span>(<span class="text-[#42D6A4]">"rt_sync_092"</span>)</div>
+<div class="pl-8 text-white">}</div>
+<div class="pl-4 text-white">}</div>
+<div class="pl-4 text-white"><span class="text-[#42D6A4]">Scaffold</span>(topBar = { <span class="text-[#5685FF]">SamAppBar</span>() })</div>
+</div>
+</div>
+</main>
+<!-- 5. Keyboard Symbol Accessory Row -->
+<footer class="w-full bg-[#11151D] border-t border-[#232B3B] z-30 flex flex-col">
+<div class="h-10 px-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
+<button class="h-8 px-2 rounded bg-[#171D28] text-xs font-semibold text-white">Tab</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#5685FF]">{</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#5685FF]">}</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#5685FF]">(</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#5685FF]">)</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-white">&lt;</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-white">&gt;</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#42D6A4]">=</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-[#42D6A4]">"</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-white">;</button>
+<button class="w-7 h-8 rounded bg-[#171D28] text-xs font-mono text-white">:</button>
+<button class="h-8 px-2 rounded bg-[#171D28] text-xs text-[#9B72FF] flex items-center gap-1" onclick="window.location.href='06_ai_chat.html'"><span class="material-symbols-outlined text-[16px]">smart_toy</span><span>AI</span></button>
+</div>
+</footer>
+</div>
+</body></html>
