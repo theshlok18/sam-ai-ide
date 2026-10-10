@@ -248,7 +248,7 @@ sam-ai-ide/
 
 <div align="center">
 
-**Shlok Sathe**  
+**Shlok **  
 *CSE & AI Systems Architect*
 
 Creator and lead architect of **S.A.M. (Smart Autonomous Machine)**.
